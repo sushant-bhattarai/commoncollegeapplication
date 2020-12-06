@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Profile extends Model
 {
-    protected $fillable = ['gender','address','dob', 'phone_number', 'school_name', 'interest', 'your_photo', 'citizenship_photo', 'marksheet_photo', 'user_id'];
+    protected $fillable = ['interest'];
 
     public function setInterestAttribute($value)
     {
