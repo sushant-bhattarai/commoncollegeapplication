@@ -8,15 +8,17 @@ class Profile extends Model
 {
     protected $fillable = ['interest'];
 
-    public function setInterestAttribute($value)
-    {
-        $this->attributes['interest'] = json_encode($value);
-    }
+    // public function setInterestAttribute($value)
+    // {
+    //     $this->attributes['interest'] = json_encode($value);
+    //     // $this->attributes['interest'] = array($value);
+    // }
 
-    public function getInterestAttribute($value)
-    {
-        return $this->attributes['interest'] = json_decode($value);
-    }
+    // public function getInterestAttribute($value)
+    // {
+    //     return $this->attributes['interest'] = json_decode($value, true);
+    //     // return $this->attributes['interest'] = array($value);
+    // }
 
     public function user()
     {

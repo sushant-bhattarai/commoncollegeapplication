@@ -40,8 +40,7 @@
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
-                    @guest
-                    @else
+                    @auth
                     <ul class="navbar-nav mr-auto font-weight-bold">
                         <a href="{{ url('/home') }}" class="nav-link">Dashboard</a>
                     </ul>
@@ -52,7 +51,7 @@
                         <a href="#" class="nav-link">My Colleges</a>
                     </ul>
                     <ul class="navbar-nav mr-auto font-weight-bold">
-                        <a href="#" class="nav-link">My Info</a>
+                        <a href="{{route('profile.edit', Auth::user()->id)}}" class="nav-link">My Info</a>
                     </ul>
                     <ul class="navbar-nav mr-auto font-weight-bold">
                         <a href="#" class="nav-link">Apply to a College</a>
@@ -60,7 +59,7 @@
                     <ul class="navbar-nav mr-auto font-weight-bold">
                         <a href="#" class="nav-link">College Search</a>
                     </ul>
-                    @endguest
+                    @endauth
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">

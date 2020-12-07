@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Profile;
 use App\User;
+use App\Profile;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\ImageUploadRequest;
 
 class ProfileController extends Controller
 {
@@ -36,7 +37,7 @@ class ProfileController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ImageUploadRequest $request)
     {
         $profile = new Profile();
 
@@ -66,16 +67,22 @@ class ProfileController extends Controller
         $request->marksheet_photo->move(public_path('/images/marksheet_photos'), $marksheet_photo);
         $profile->marksheet_photo = $marksheet_photo;
 
+
+        //saving interests by implode function:
+        $stringOfInterest = implode(',', $request->input('interest'));
+        $profile->interest = $stringOfInterest;
+
+
         //saving interests
-        $input = $request->all();
-        $input['interest'] = $request->input('interest');
-        $profile->interest = $input['interest'];
+        // $input = $request->all();
+        // $input['interest'] = $request->input('interest');
+        // $profile->interest = $input['interest'];
         
 
         $profile->save();
     
         $user  = User::findOrFail(Auth::user()->id);
-        $user->profile_id = 1;
+        $user->profile_id = Auth::user()->id;
         $user->save();
 
         return redirect()->route('home')->withStatus('Profile info added!');
@@ -102,8 +109,13 @@ class ProfileController extends Controller
      */
     public function edit($id)
     {
-        //
+        $profile = Profile::find($id);
+        // return $profile;
+        $user = User::find(Auth::user()->id);
+        // return $user;
+        return view('profile.edit', compact('profile', 'user'));
     }
+
 
     /**
      * Update the specified resource in storage.
