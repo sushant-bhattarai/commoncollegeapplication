@@ -15,10 +15,10 @@
                             <label for="gender" class="col-md-4 col-form-label text-md-right">{{ __('Gender') }}</label>
 
                             <div class="col-md-6">
-                                <select name="gender" id="gender" class="form-control @error('gender') is-invalid @enderror" name="gender" value="{{ old('gender') }}">
+                                <select name="gender" id="gender" class="form-control @error('gender') is-invalid @enderror" name="gender" value=>
                                     <option value="">--Select your Gender--</option>
-                                    <option value="Male">Male</option>
-                                    <option value="Female">Female</option>
+                                    <option value="Male" {{ old('gender') == "Male" ? "selected" : ""}}>Male</option>
+                                    <option value="Female" {{ old('gender') == "Female" ? "selected" : ""}}>Female</option>
                                 </select>
 
                                 @error('gender')
@@ -75,7 +75,15 @@
                             <label for="your_photo" class="col-md-4 col-form-label text-md-right">{{ __('Your Photo') }}</label>
 
                             <div class="col-md-6">
-                                <input type="file" name="your_photo" id="your_photo" class="form-control @error('your_photo') is-invalid @enderror" value="{{ old('your_photo') }}" >
+                                <input type="file" name="your_photo" id="your_photo" onchange="loadFile1(event)" class="form-control @error('your_photo') is-invalid @enderror" value="{{ old('your_photo') }}" ><br>
+                                <img id="output1" class = "img-fluid"/>
+
+                                <script>
+                                    var loadFile1 = function(event) {
+                                        var your_photo = document.getElementById('output1');
+                                        your_photo.src = URL.createObjectURL(event.target.files[0]);
+                                    };
+                                </script>	
 
                                 @error('your_photo')
                                     <span class="invalid-feedback" role="alert">
@@ -89,7 +97,16 @@
                             <label for="citizenship_photo" class="col-md-4 col-form-label text-md-right">{{ __('Citizenship Copy') }}</label>
 
                             <div class="col-md-6">
-                                <input type="file" name="citizenship_photo" id="citizenship_photo" class="form-control @error('citizenship_photo') is-invalid @enderror" value="{{ old('citizenship_photo') }}" >
+                                <input type="file" name="citizenship_photo" id="citizenship_photo" onchange="loadFile2(event)" class="form-control @error('citizenship_photo') is-invalid @enderror" value="{{ old('citizenship_photo') }}" ><br>
+                                <img id="output2" class = "img-fluid"/>
+
+                                <script>
+                                    var loadFile2 = function(event2) {
+                                        var citizenship_photo = document.getElementById('output2');
+                                        citizenship_photo.src = URL.createObjectURL(event.target.files[0]);
+                                    };
+                                </script>	
+
 
                                 @error('citizenship_photo')
                                     <span class="invalid-feedback" role="alert">
@@ -117,7 +134,16 @@
                             <label for="marksheet_photo" class="col-md-4 col-form-label text-md-right">{{ __('Marksheet copy') }}</label>
 
                             <div class="col-md-6">
-                                <input type="file" name="marksheet_photo" id="marksheet_photo" class="form-control @error('marksheet_photo') is-invalid @enderror" value="{{ old('marksheet_photo') }}">
+                                <input type="file" name="marksheet_photo" id="marksheet_photo" onchange="loadFile3(event)" class="form-control @error('marksheet_photo') is-invalid @enderror" value="{{ old('marksheet_photo') }}"><br>
+                                <img id="output3" class = "img-fluid"/>
+
+                                <script>
+                                    var loadFile3 = function(event) {
+                                        var marksheet_photo = document.getElementById('output3');
+                                        marksheet_photo.src = URL.createObjectURL(event.target.files[0]);
+                                    };
+                                </script>	
+
                                 
                                 @error('marksheet_photo')
                                     <span class="invalid-feedback" role="alert">
@@ -132,16 +158,19 @@
 
                             <div class="col-md-6">
 
-                                <label><input type="checkbox" name="interest[]" value="Academic"> Academic </label>
-                                <label><input type="checkbox" name="interest[]" value="Sports"> Sports </label>
-                                <label><input type="checkbox" name="interest[]" value="ECA"> ECA </label>
-                                <label><input type="checkbox" name="interest[]" value="Leadership"> Leadership </label>
-                                
-                                @error('interest[]')
+                                <div class="{{ $errors->has('interest') ? ' has-error' : '' }}">
+                                    <input type="checkbox" name="interest[]" value="Academic"><label> Academic </label><br>
+                                    <input type="checkbox" name="interest[]" value="Sports"><label> Sports </label><br>
+                                    <input type="checkbox" name="interest[]" value="ECA"><label> ECA </label><br>
+                                    <input type="checkbox" name="interest[]" value="Leadership"><label> Leadership </label>
+                                </div>
+
+                                @error('interest')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
+
                             </div>
                         </div>
 
@@ -158,4 +187,6 @@
         </div>
     </div>
 </div>
+
+
 @endsection

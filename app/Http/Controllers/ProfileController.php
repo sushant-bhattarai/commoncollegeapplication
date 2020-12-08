@@ -7,6 +7,7 @@ use App\Profile;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\ImageEditRequest;
 use App\Http\Requests\ImageUploadRequest;
 
 class ProfileController extends Controller
@@ -124,9 +125,55 @@ class ProfileController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ImageEditRequest $request, $id)
     {
+        $profile = Profile::find($id);
+
+        $profile->gender = $request->gender;
+        $profile->address = $request->address;
+        $profile->dob = $request->dob;
+        $profile->phone_number = $request->phone_number;
+        $profile->school_name = $request->school_name;
+        $profile->user_id = Auth::user()->id;
+
+
+        $myArray =explode('@', Auth::user()->email);
+
+        //your_photo upload
+        if($request->has('your_photo')){
+            $your_photo = 'your_photo_'.Auth::user()->id.'_'.time().'_'.$myArray[0].'.'.$request->your_photo->getClientOriginalExtension();
+            $request->your_photo->move(public_path('/images/your_photos'), $your_photo);
+            $profile->your_photo = $your_photo;
+        }
+
+        //citizenship_photo upload
+        if($request->has('citizenship_photo')){
+            $citizenship_photo = 'citizenship_photo_'.Auth::user()->id.'_'.time().'_'.$myArray[0].'.'.$request->citizenship_photo->getClientOriginalExtension();
+            $request->citizenship_photo->move(public_path('/images/citizenship_photos'), $citizenship_photo);
+            $profile->citizenship_photo = $citizenship_photo;
+        }
+
+        //marksheet_photo upload
+        if($request->has('marksheet_photo')){
+            $marksheet_photo = 'marksheet_photo_'.Auth::user()->id.'_'.time().'_'.$myArray[0].'.'.$request->marksheet_photo->getClientOriginalExtension();
+            $request->marksheet_photo->move(public_path('/images/marksheet_photos'), $marksheet_photo);
+            $profile->marksheet_photo = $marksheet_photo;
+        }
+
+        //saving interests by implode function:
+        $stringOfInterest = implode(',', $request->input('interest'));
+        $profile->interest = $stringOfInterest;
+
+
+        //saving interests
+        // $input = $request->all();
+        // $input['interest'] = $request->input('interest');
+        // $profile->interest = $input['interest'];
         
+
+        $profile->save();
+
+        return redirect()->route('home')->withStatus('Profile info updated!');
     }
 
     /**

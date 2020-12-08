@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class ImageUploadRequest extends FormRequest
+class ImageEditRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -27,20 +27,9 @@ class ImageUploadRequest extends FormRequest
             'gender' => 'required',
             'address' => 'required',
             'dob' => 'required|date',
-            'phone_number' => 'required|digits:10|unique:profiles',
+            'phone_number' => 'required|digits:10',
             'school_name' => 'required',
-            'your_photo' => 'required|image',
-            'citizenship_photo' => 'required|image',
-            'marksheet_photo' => 'required|image',
             'interest' => 'required',
         ];
     }
-
-    public function messages()
-{
-    return [
-        'gender.required' => 'Gender hala na',
-        'interest.required' => 'You must select at least one of your interest.',
-    ];
-}
 }
