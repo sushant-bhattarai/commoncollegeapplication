@@ -72,9 +72,10 @@ class CollegeController extends Controller
      * @param  \App\College  $college
      * @return \Illuminate\Http\Response
      */
-    public function edit(College $college)
+    public function edit($id)
     {
-        //
+        $college = College::find($id);
+        return view('college.edit', compact('college'));
     }
 
     /**
@@ -84,9 +85,22 @@ class CollegeController extends Controller
      * @param  \App\College  $college
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, College $college)
+    public function update(CollegeRequest $request, $id)
     {
-        //
+        $college = College::find($id);
+
+        $college->name = $request->name;
+        $college->address = $request->address;
+        $college->phone_number = $request->phone_number;
+        $college->no_of_seats = $request->no_of_seats;
+        $college->description = $request->description;
+
+        //saving specialities
+        $stringOfSpeciality = implode(',', $request->input('speciality'));
+        $college->speciality = $stringOfSpeciality;
+        
+        $college->save();
+        return redirect()->route('adminHome')->withStatus('College updated!');
     }
 
     /**

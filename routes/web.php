@@ -23,22 +23,23 @@ Route::get('/', function () {
 
 // Route::post('logout','Auth\LoginController@logout')->middleware('logoutMiddleware');
 
-
 Route::get('/admin/login', 'AdminLoginController@showAdminLoginForm');
 Route::get('/admin/register', 'AdminRegisterController@showAdminRegisterForm');
 
 Route::post('/admin/login', 'AdminLoginController@adminLogin');
 Route::post('/admin/register', 'AdminRegisterController@createAdmin');
 
+
 Route::group(['middleware' => 'auth:admin'], function () {
     Route::view('/admin', 'admin.admin')->name('adminHome');
+
+    
 });
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('/profile','ProfileController')->middleware('auth');
 
 
-Route::resource('/college','CollegeController');
+Route::resource('/college','CollegeController')->middleware('auth:admin');
 
-Route::get('/home', 'HomeController@index')->name('home');
 

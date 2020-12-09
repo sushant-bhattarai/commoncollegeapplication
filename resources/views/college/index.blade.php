@@ -12,8 +12,8 @@
                     <table class="table">
                         <thead>
                             <tr>
-                                <td>College Name</td>
-                                <td>Options</td>
+                                <td><strong>College Name</strong></td>
+                                <td><strong>Options</strong></td>
                             </tr>
                         </thead>
 
@@ -23,7 +23,7 @@
                                     <td><a href="{{route('college.show', $college->id) }}">{{ $college->name }}</a></td>
                                     <td>
                                         <a href="{{route('college.show', $college->id) }}"><button class="btn btn-sm btn-primary">Info</button></a>
-                                        <a href=""><button class="btn btn-sm btn-secondary">Edit</button></a>
+                                        <a href="{{route('college.edit', $college->id) }}"><button class="btn btn-sm btn-secondary">Edit</button></a>
                                         <a href=""><button class="btn btn-sm btn-danger">Delete</button></a>
                                     </td>
                                 </tr>

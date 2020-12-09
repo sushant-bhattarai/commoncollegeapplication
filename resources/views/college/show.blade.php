@@ -14,23 +14,23 @@
                 <table class="table">
                     <thead>
                         <tr>
-                            <td>Name</td>
+                            <td><strong>Name</strong></td>
                             <td>{{ $college->name }}</td>
                         </tr>
                         <tr>
-                            <td>Address</td>
+                            <td><strong>Address</strong></td>
                             <td>{{ $college->address }}</td>
                         </tr>
                         <tr>
-                            <td>Contact Number</td>
+                            <td><strong>Contact Number</strong></td>
                             <td>{{ $college->phone_number }}</td>
                         </tr>
                         <tr>
-                            <td>No. of Seats</td>
+                            <td><strong>No. of Seats</strong></td>
                             <td>{{ $college->no_of_seats }}</td>
                         </tr>
                         <tr>
-                            <td>Specialities</td>
+                            <td><strong>Specialities</strong></td>
                             <td>
                                 <?php  
                                     $arrayOfSpeciality = explode(',', $college->speciality);
@@ -45,7 +45,7 @@
                         
                     </thead>
 
-                </table>
+                </table><hr>
                 <p>
                     {{ $college->description }}
                 </p>

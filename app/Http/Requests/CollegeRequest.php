@@ -27,7 +27,7 @@ class CollegeRequest extends FormRequest
             'name' => 'required',
             'address' => 'required',
             'speciality' => 'required',
-            'phone_number' => 'required|numeric|unique:colleges',
+            'phone_number' => 'required|numeric',
             'no_of_seats' => 'required|numeric',
             'description' => 'required|min:25',
         ];
