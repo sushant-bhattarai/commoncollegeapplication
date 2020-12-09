@@ -8,6 +8,11 @@
                 <div class="card-header">Admin Dashboard</div>
 
                 <div class="card-body">
+                    @if (session('status'))
+                        <div class="alert alert-success" role="alert">
+                            {{ session('status') }}
+                        </div>
+                    @endif
                     <a href="{{ route('college.create') }}">Add College</a><br><br>
                     <a href="{{ route('college.index') }}">View added Colleges</a>
                 </div>
