@@ -15,7 +15,8 @@ class CollegeController extends Controller
      */
     public function index()
     {
-        //
+        $colleges = College::all();
+        return view('college.index', compact('colleges'));
     }
 
     /**
@@ -61,7 +62,8 @@ class CollegeController extends Controller
      */
     public function show(College $college)
     {
-        //
+        // return $college;
+        return view('college.show', compact('college'));
     }
 
     /**

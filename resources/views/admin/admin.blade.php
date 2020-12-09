@@ -8,7 +8,7 @@
                 <div class="card-header">Dashboard</div>
 
                 <div class="card-body">
-                    <a href="{{ route('college.create') }}">Add College</a><br>
+                    <a href="{{ route('college.create') }}">Add College</a><br><br>
                     <a href="{{ route('college.index') }}">View added Colleges</a>
                 </div>
             </div>

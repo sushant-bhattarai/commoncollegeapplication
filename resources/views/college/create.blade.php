@@ -8,6 +8,7 @@
                 <div class="card-header">{{ __('Add College') }}</div>
 
                 <div class="card-body">
+                <a class="" href="{{route('college.index')}}">See Added Colleges</a><br><br>
                     <form method="POST" action="{{ route('college.store') }}">
                         @csrf
 
@@ -43,7 +44,7 @@
                             <label for="phone_number" class="col-md-4 col-form-label text-md-right">{{ __('Phone Number') }}</label>
 
                             <div class="col-md-6">
-                                <input id="phone_number" type="text" class="form-control @error('phone_number') is-invalid @enderror" name="phone_number" autocomplete="phone_number">
+                                <input id="phone_number" type="text" class="form-control @error('phone_number') is-invalid @enderror" name="phone_number" value="{{ old('phone_number') }}" autocomplete="phone_number">
 
                                 @error('phone_number')
                                     <span class="invalid-feedback" role="alert">
@@ -57,7 +58,7 @@
                             <label for="no_of_seats" class="col-md-4 col-form-label text-md-right">{{ __('Number of seats') }}</label>
 
                             <div class="col-md-6">
-                                <input id="no_of_seats" type="number" class="form-control @error('no_of_seats') is-invalid @enderror" name="no_of_seats" autocomplete="no_of_seats">
+                                <input id="no_of_seats" type="number" class="form-control @error('no_of_seats') is-invalid @enderror" name="no_of_seats" value="{{ old('no_of_seats') }}" autocomplete="no_of_seats">
 
                                 @error('no_of_seats')
                                     <span class="invalid-feedback" role="alert">
@@ -88,7 +89,7 @@
                             <label for="description" class="col-md-4 col-form-label text-md-right">{{ __('Description') }}</label>
 
                             <div class="col-md-6">
-                                <textarea id="description" class="form-control @error('description') is-invalid @enderror" name="description" autocomplete="description"></textarea>
+                                <textarea id="description" class="form-control @error('description') is-invalid @enderror" name="description" autocomplete="description">{{ old('description') }}"</textarea>
 
                                 @error('description')
                                     <span class="invalid-feedback" role="alert">
