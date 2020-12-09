@@ -65,12 +65,14 @@
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
                         @guest
+                        <a  href="/admin/login" class="nav-link text-gray-700 font-weight-bold"> Admin Login </a>
+                        <a href="/admin/register" class="nav-link text-gray-700 font-weight-bold"> Admin Register </a>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                <a class="nav-link" href="{{ route('login') }}">{{ __('Student Login') }}</a>
                             </li>
                             @if (Route::has('register'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Student Register') }}</a>
                                 </li>
                             @endif
                         @else

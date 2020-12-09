@@ -17,11 +17,25 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes();
+// Route::group(['middleware' => 'adminMiddleware'], function () {
+    Auth::routes();
+// });
+
+// Route::post('logout','Auth\LoginController@logout')->middleware('logoutMiddleware');
+
+
+Route::get('/admin/login', 'AdminLoginController@showAdminLoginForm');
+Route::get('/admin/register', 'AdminRegisterController@showAdminRegisterForm');
+
+Route::post('/admin/login', 'AdminLoginController@adminLogin');
+Route::post('/admin/register', 'AdminRegisterController@createAdmin');
+
+Route::group(['middleware' => 'auth:admin'], function () {
+    Route::view('/admin', 'admin.admin');
+});
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('/profile','ProfileController')->middleware('auth');
 
-Auth::routes();
-
 Route::get('/home', 'HomeController@index')->name('home');
+
