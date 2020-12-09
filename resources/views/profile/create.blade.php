@@ -158,12 +158,10 @@
 
                             <div class="col-md-6">
 
-                                <div class="{{ $errors->has('interest') ? ' has-error' : '' }}">
-                                    <input type="checkbox" name="interest[]" value="Academic"><label> Academic </label><br>
-                                    <input type="checkbox" name="interest[]" value="Sports"><label> Sports </label><br>
-                                    <input type="checkbox" name="interest[]" value="ECA"><label> ECA </label><br>
-                                    <input type="checkbox" name="interest[]" value="Leadership"><label> Leadership </label>
-                                </div>
+                                    <input id="interest1" type="checkbox" name="interest[]" value="Academic"><label for="interest1"> Academic </label><br>
+                                    <input id="interest2" type="checkbox" name="interest[]" value="Sports"><label for="interest2"> Sports </label><br>
+                                    <input id="interest3" type="checkbox" name="interest[]" value="ECA"><label for="interest3"> ECA </label><br>
+                                    <input id="interest4" type="checkbox" name="interest[]" value="Leadership"><label for="interest4"> Leadership </label>
 
                                 @error('interest')
                                     <span class="invalid-feedback" role="alert">

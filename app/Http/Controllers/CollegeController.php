@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\College;
 use Illuminate\Http\Request;
+use App\Http\Requests\CollegeRequest;
 
 class CollegeController extends Controller
 {
@@ -24,7 +25,7 @@ class CollegeController extends Controller
      */
     public function create()
     {
-        //
+        return view('college.create');
     }
 
     /**
@@ -33,9 +34,23 @@ class CollegeController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CollegeRequest $request)
     {
-        //
+        $college = new College();
+
+        $college->name = $request->name;
+        $college->address = $request->address;
+        $college->phone_number = $request->phone_number;
+        $college->no_of_seats = $request->no_of_seats;
+        $college->description = $request->description;
+
+        //saving specialities
+        $stringOfSpeciality = implode(',', $request->input('speciality'));
+        $college->speciality = $stringOfSpeciality;
+        
+        $college->save();
+        return redirect()->route('adminHome')->withStatus('College added!');
+
     }
 
     /**

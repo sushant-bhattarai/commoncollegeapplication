@@ -31,11 +31,14 @@ Route::post('/admin/login', 'AdminLoginController@adminLogin');
 Route::post('/admin/register', 'AdminRegisterController@createAdmin');
 
 Route::group(['middleware' => 'auth:admin'], function () {
-    Route::view('/admin', 'admin.admin');
+    Route::view('/admin', 'admin.admin')->name('adminHome');
 });
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('/profile','ProfileController')->middleware('auth');
+
+
+Route::resource('/college','CollegeController');
 
 Route::get('/home', 'HomeController@index')->name('home');
 

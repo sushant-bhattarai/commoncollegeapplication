@@ -3,12 +3,13 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-10">
             <div class="card">
                 <div class="card-header">Dashboard</div>
 
                 <div class="card-body">
-                    Hi admin!
+                    <a href="{{ route('college.create') }}">Add College</a><br>
+                    <a href="{{ route('college.index') }}">View added Colleges</a>
                 </div>
             </div>
         </div>

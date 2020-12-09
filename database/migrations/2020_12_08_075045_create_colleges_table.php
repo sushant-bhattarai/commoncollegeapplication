@@ -15,6 +15,12 @@ class CreateCollegesTable extends Migration
     {
         Schema::create('colleges', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->string('address');
+            $table->string('speciality');
+            $table->string('phone_number')->unique();
+            $table->integer('no_of_seats');
+            $table->string('description');
             $table->timestamps();
         });
     }
