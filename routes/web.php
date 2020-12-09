@@ -18,7 +18,7 @@ Route::get('/', function () {
 });
 
 // Route::group(['middleware' => 'adminMiddleware'], function () {
-    Auth::routes();
+Auth::routes();
 // });
 
 // Route::post('logout','Auth\LoginController@logout')->middleware('logoutMiddleware');
@@ -32,14 +32,17 @@ Route::post('/admin/register', 'AdminRegisterController@createAdmin');
 
 Route::group(['middleware' => 'auth:admin'], function () {
     Route::view('/admin', 'admin.admin')->name('adminHome');
-
+    // Auth::routes();
     
 });
+
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('/profile','ProfileController')->middleware('auth');
 
-
 Route::resource('/college','CollegeController')->middleware('auth:admin');
+
+
+
 
 
