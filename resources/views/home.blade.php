@@ -21,7 +21,6 @@
                     <ul>
                         <li>This tab is your Dashboard. After you add a college to your list, you will see your application progress here.</li>
                         <li>All colleges will need you to answer the common questions under your <a href="">My Info</a> tab.</li>
-                        <li>To apply to a college, head over to the <a href="">Apply to a College</a> tab.</li>
                         <li>To search for a college, head over to the <a href="">College Search</a> tab.</li>
                         <li>Once you have added a college, you can complete and submit your application in the <a href="">My Colleges</a> tab.</li>
 

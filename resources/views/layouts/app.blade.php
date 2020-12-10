@@ -55,9 +55,6 @@
                         <a href="{{route('profile.edit', Auth::user()->id)}}" class="nav-link">My Info</a>
                     </ul>
                     <ul class="navbar-nav mr-auto font-weight-bold">
-                        <a href="#" class="nav-link">Apply to a College</a>
-                    </ul>
-                    <ul class="navbar-nav mr-auto font-weight-bold">
                         <a href="#" class="nav-link">College Search</a>
                     </ul>
                     @endauth
