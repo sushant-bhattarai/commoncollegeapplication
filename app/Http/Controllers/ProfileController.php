@@ -41,7 +41,8 @@ class ProfileController extends Controller
     public function store(ImageUploadRequest $request)
     {
         $profile = new Profile();
-
+        
+        $profile->id = Auth::user()->id;
         $profile->gender = $request->gender;
         $profile->address = $request->address;
         $profile->dob = $request->dob;
@@ -129,6 +130,7 @@ class ProfileController extends Controller
     {
         $profile = Profile::find($id);
 
+        $profile->id = Auth::user()->id;
         $profile->gender = $request->gender;
         $profile->address = $request->address;
         $profile->dob = $request->dob;

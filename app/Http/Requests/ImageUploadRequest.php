@@ -37,10 +37,10 @@ class ImageUploadRequest extends FormRequest
     }
 
     public function messages()
-{
-    return [
-        'gender.required' => 'Gender hala na',
-        'interest.required' => 'You must select at least one of your interest.',
-    ];
-}
+    {
+        return [
+            'gender.required' => 'Gender hala na',
+            'interest.required' => 'You must select at least one of your interest.',
+        ];
+    }
 }

@@ -55,7 +55,10 @@
                         <a href="{{route('profile.edit', Auth::user()->id)}}" class="nav-link">My Info</a>
                     </ul>
                     <ul class="navbar-nav mr-auto font-weight-bold">
-                        <a href="#" class="nav-link">College Search</a>
+                        <a href="#" class="nav-link">Available Colleges</a>
+                    </ul>
+                    <ul class="navbar-nav mr-auto font-weight-bold">
+                        <a href="/search" class="nav-link">College Search</a>
                     </ul>
                     @endauth
 
@@ -63,14 +66,14 @@
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
                         @guest
-                        <a  href="/admin/login" class="nav-link text-gray-700 font-weight-bold"> Admin Login </a>
-                        <a href="/admin/register" class="nav-link text-gray-700 font-weight-bold"> Admin Register </a>
+                        <!-- <a  href="/admin/login" class="nav-link text-gray-700 font-weight-bold"> Admin Login </a>
+                        <a href="/admin/register" class="nav-link text-gray-700 font-weight-bold"> Admin Register </a> -->
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Student Login') }}</a>
+                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                             </li>
                             @if (Route::has('register'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Student Register') }}</a>
+                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
                                 </li>
                             @endif
                         @else
