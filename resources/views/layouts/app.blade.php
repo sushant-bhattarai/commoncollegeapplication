@@ -45,9 +45,6 @@
                     <ul class="navbar-nav mr-auto font-weight-bold">
                         <a href="{{ url('/home') }}" class="nav-link">Dashboard</a>
                     </ul>
-                    <!-- <ul class="navbar-nav mr-auto font-weight-bold">
-                        <a href="#" class="nav-link">My Profile</a>
-                    </ul> -->
                     <ul class="navbar-nav mr-auto font-weight-bold">
                         <a href="#" class="nav-link">My Colleges</a>
                     </ul>

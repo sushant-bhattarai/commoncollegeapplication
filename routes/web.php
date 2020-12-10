@@ -23,31 +23,31 @@ Route::get('/', function () {
 Auth::routes();
 // });
 
-// Route::post('logout','Auth\LoginController@logout')->middleware('logoutMiddleware');
 
-Route::get('/admin/login', 'AdminLoginController@showAdminLoginForm');
-Route::get('/admin/register', 'AdminRegisterController@showAdminRegisterForm');
+// Route::get('/admin/login', 'AdminLoginController@showAdminLoginForm');
+// Route::get('/admin/register', 'AdminRegisterController@showAdminRegisterForm');
 
-Route::post('/admin/login', 'AdminLoginController@adminLogin');
-Route::post('/admin/register', 'AdminRegisterController@createAdmin');
+// Route::post('/admin/login', 'AdminLoginController@adminLogin');
+// Route::post('/admin/register', 'AdminRegisterController@createAdmin');
 
 
-Route::group(['middleware' => 'auth:admin'], function () {
-    Route::view('/admin', 'admin.admin')->name('adminHome');
+// Route::group(['middleware' => 'auth:admin'], function () {
+    Route::view('/adminHome', 'adminHome')->name('adminHome')->middleware('auth');
     // Auth::routes();
     
-});
+// });
 
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('/profile','ProfileController')->middleware('auth');
 
-Route::resource('/college','CollegeForAdminController')->middleware('auth:admin');
+Route::resource('/college','CollegeForAdminController')->middleware('auth');
 
-Route::get('/search', 'CollegeForStudentController@showSearchForm');
-Route::post('/search', 'CollegeForStudentController@handleSearch');
-Route::get('/available/colleges', 'CollegeForStudentController@showCollegeToStudent');
-
+Route::group(['middleware' => 'auth'], function(){
+    Route::get('/search', 'CollegeForStudentController@showSearchForm');
+    Route::post('/search', 'CollegeForStudentController@handleSearch');
+    Route::get('/available/colleges', 'CollegeForStudentController@showCollegeToStudent');
+});
 
 
 

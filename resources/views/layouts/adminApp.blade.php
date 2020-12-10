@@ -41,25 +41,42 @@
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
+                    @auth
+                    <ul class="navbar-nav mr-auto font-weight-bold">
+                        <a href="{{ route('college.create') }}" class="nav-link">Add new College</a>
+                    </ul>
+                    <ul class="navbar-nav mr-auto font-weight-bold">
+                        <a href="{{ route('college.index') }}" class="nav-link">View added colleges</a>
+                    </ul>
+                    <ul class="navbar-nav mr-auto font-weight-bold">
+                        <a href="" class="nav-link">Manage Applications</a>
+                    </ul>
+                    <!-- <ul class="navbar-nav mr-auto font-weight-bold">
+                        <a href="" class="nav-link">Available Colleges</a>
+                    </ul>
+                    <ul class="navbar-nav mr-auto font-weight-bold">
+                        <a href="" class="nav-link">College Search</a>
+                    </ul> -->
+                    @endauth
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
                         @guest
-                        <a  href="/admin/login" class="nav-link text-gray-700 font-weight-bold"> Admin Login </a>
-                        <a href="/admin/register" class="nav-link text-gray-700 font-weight-bold"> Admin Register </a>
+                        <!-- <a  href="/admin/login" class="nav-link text-gray-700 font-weight-bold"> Admin Login </a>
+                        <a href="/admin/register" class="nav-link text-gray-700 font-weight-bold"> Admin Register </a> -->
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Student Login') }}</a>
+                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                             </li>
                             @if (Route::has('register'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Student Register') }}</a>
+                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
                                 </li>
                             @endif
                         @else
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    Admin
+                                    {{ Auth::user()->name }}
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
