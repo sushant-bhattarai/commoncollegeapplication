@@ -40,6 +40,7 @@ class ProfileController extends Controller
      */
     public function store(ImageUploadRequest $request)
     {
+        
         $profile = new Profile();
         
         $profile->id = Auth::user()->id;
@@ -69,12 +70,15 @@ class ProfileController extends Controller
         $request->marksheet_photo->move(public_path('/images/marksheet_photos'), $marksheet_photo);
         $profile->marksheet_photo = $marksheet_photo;
 
-
         //saving interests by implode function:
-        $stringOfInterest = implode(',', $request->input('interest'));
-        $profile->interest = $stringOfInterest;
-
-
+        if($request->has('interest')){
+            $stringOfInterest = implode(',', $request->input('interest'));
+            $profile->interest = $stringOfInterest;
+        }
+        else{
+            $profile->interest = "Academic";
+        }
+        
         //saving interests
         // $input = $request->all();
         // $input['interest'] = $request->input('interest');
@@ -163,8 +167,13 @@ class ProfileController extends Controller
         }
 
         //saving interests by implode function:
-        $stringOfInterest = implode(',', $request->input('interest'));
-        $profile->interest = $stringOfInterest;
+        if($request->has('interest')){
+            $stringOfInterest = implode(',', $request->input('interest'));
+            $profile->interest = $stringOfInterest;
+        }
+        else{
+            $profile->interest = "Academic";
+        }
 
 
         //saving interests

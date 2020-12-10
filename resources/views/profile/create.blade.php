@@ -154,11 +154,11 @@
                         </div>
 
                         <div class="form-group row">
-                            <label class="col-md-4 col-form-label text-md-right">{{ __('Your Interests') }}</label>
+                            <label class="col-md-4 col-form-label text-md-right">{{ __('Your Interest of College Speciality') }}</label>
 
                             <div class="col-md-6">
 
-                                    <input id="interest1" type="checkbox" name="interest[]" value="Academic"><label for="interest1"> Academic </label><br>
+                                    <input id="interest1" type="checkbox" name="interest[]" value="Academic"><label for="interest1"> Academic (default) </label><br>
                                     <input id="interest2" type="checkbox" name="interest[]" value="Sports"><label for="interest2"> Sports </label><br>
                                     <input id="interest3" type="checkbox" name="interest[]" value="ECA"><label for="interest3"> ECA </label><br>
                                     <input id="interest4" type="checkbox" name="interest[]" value="Leadership"><label for="interest4"> Leadership </label>

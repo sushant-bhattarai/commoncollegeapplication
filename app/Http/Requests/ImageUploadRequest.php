@@ -32,7 +32,6 @@ class ImageUploadRequest extends FormRequest
             'your_photo' => 'required|image',
             'citizenship_photo' => 'required|image',
             'marksheet_photo' => 'required|image',
-            'interest' => 'required',
         ];
     }
 
@@ -40,7 +39,6 @@ class ImageUploadRequest extends FormRequest
     {
         return [
             'gender.required' => 'Gender hala na',
-            'interest.required' => 'You must select at least one of your interest.',
         ];
     }
 }
