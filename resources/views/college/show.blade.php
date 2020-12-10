@@ -11,8 +11,8 @@
                 <a class="" href="{{route('college.create')}}">Add College</a>
                 <a class="ml-5" href="{{route('college.index')}}">See Added Colleges</a><br><br>
 
-                <table class="table">
-                    <thead>
+                <table class="table table-striped">
+                    <tbody>
                         <tr>
                             <td><strong>Name</strong></td>
                             <td>{{ $college->name }}</td>
@@ -43,7 +43,7 @@
                             </td>
                         </tr>
                         
-                    </thead>
+                    </tbody>
 
                 </table><hr>
                 <p>

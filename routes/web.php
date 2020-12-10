@@ -42,25 +42,11 @@ Route::group(['middleware' => 'auth:admin'], function () {
 Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('/profile','ProfileController')->middleware('auth');
 
-Route::resource('/college','CollegeController')->middleware('auth:admin');
+Route::resource('/college','CollegeForAdminController')->middleware('auth:admin');
 
-Route::view('/search', 'college.search');
-Route::post('/search', function(SearchRequest $request){
-    $q = $request->input('q');
-    // var_dump($q);
-    if($q != ' '){
-        $college = College::where('name','LIKE','%'.$q.'%')
-                            ->orWhere('address','LIKE','%'.$q.'%')
-                            ->get();
-        if(count($college) > 0)
-            return view('college.search')->withDetails($college)->withQuery ( $q );
-
-        return view ('college.search')->withStatus('No colleges found. Try again!');
-    }
-
-
-});
-
+Route::get('/search', 'CollegeForStudentController@showSearchForm');
+Route::post('/search', 'CollegeForStudentController@handleSearch');
+Route::get('/available/colleges', 'CollegeForStudentController@showCollegeToStudent');
 
 
 

@@ -55,7 +55,7 @@
                         <a href="{{route('profile.edit', Auth::user()->id)}}" class="nav-link">My Info</a>
                     </ul>
                     <ul class="navbar-nav mr-auto font-weight-bold">
-                        <a href="#" class="nav-link">Available Colleges</a>
+                        <a href="/available/colleges" class="nav-link">Available Colleges</a>
                     </ul>
                     <ul class="navbar-nav mr-auto font-weight-bold">
                         <a href="/search" class="nav-link">College Search</a>

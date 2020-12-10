@@ -6,7 +6,7 @@ use App\College;
 use Illuminate\Http\Request;
 use App\Http\Requests\CollegeRequest;
 
-class CollegeController extends Controller
+class CollegeForAdminController extends Controller
 {
     /**
      * Display a listing of the resource.

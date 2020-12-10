@@ -12,7 +12,7 @@
                         @csrf
                         <div class="input-group">
                             <input type="text" class="form-control @error('q') is-invalid @enderror" name="q"
-                            > <span class="input-group-btn">
+                            placeholder="Search according to name or address"> <span class="input-group-btn">
                                 <button type="submit" class="btn btn-primary ml-2">
                                     <span class="glyphicon glyphicon-search">Search</span>
                                 </button>
@@ -32,14 +32,17 @@
                             <thead>
                                 <tr>
                                     <th>Name</th>
-                                    <th>Address</th>
+                                    <th>Options</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach($details as $college)
                                 <tr>
                                     <td><a href="#">{{$college->name}}</a></td>
-                                    <td>{{$college->address}}</td>
+                                    <td>
+                                        <a href="#"><button class="btn btn-info">Info</button></a>
+                                        <a href="#"><button class="btn btn-success">Add to my College</button></a>
+                                    </td>
                                 </tr>
                                 @endforeach
                             </tbody>
