@@ -16,7 +16,7 @@ class CollegeForAdminController extends Controller
     public function index()
     {
         $colleges = College::all();
-        return view('college.index', compact('colleges'));
+        return view('collegeForAdmin.index', compact('colleges'));
     }
 
     /**
@@ -26,7 +26,7 @@ class CollegeForAdminController extends Controller
      */
     public function create()
     {
-        return view('college.create');
+        return view('collegeForAdmin.create');
     }
 
     /**
@@ -63,7 +63,7 @@ class CollegeForAdminController extends Controller
     public function show(College $college)
     {
         // return $college;
-        return view('college.show', compact('college'));
+        return view('collegeForAdmin.show', compact('college'));
     }
 
     /**
@@ -75,7 +75,7 @@ class CollegeForAdminController extends Controller
     public function edit($id)
     {
         $college = College::find($id);
-        return view('college.edit', compact('college'));
+        return view('collegeForAdmin.edit', compact('college'));
     }
 
     /**

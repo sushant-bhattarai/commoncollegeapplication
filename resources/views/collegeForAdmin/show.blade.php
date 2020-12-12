@@ -8,8 +8,7 @@
                 <div class="card-header">Information of {{ $college->name }}</div>
 
                 <div class="card-body">
-                <a class="" href="{{route('college.create')}}">Add College</a>
-                <a class="ml-5" href="{{route('college.index')}}">See Added Colleges</a><br><br>
+                
 
                 <table class="table table-striped">
                     <tbody>

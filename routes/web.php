@@ -19,26 +19,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-// Route::group(['middleware' => 'adminMiddleware'], function () {
 Auth::routes();
-// });
-
-
-// Route::get('/admin/login', 'AdminLoginController@showAdminLoginForm');
-// Route::get('/admin/register', 'AdminRegisterController@showAdminRegisterForm');
-
-// Route::post('/admin/login', 'AdminLoginController@adminLogin');
-// Route::post('/admin/register', 'AdminRegisterController@createAdmin');
-
-
-// Route::group(['middleware' => 'auth:admin'], function () {
-    Route::view('/adminHome', 'adminHome')->name('adminHome')->middleware('auth');
-    // Auth::routes();
-    
-// });
-
-
+Route::view('/adminHome', 'adminHome')->name('adminHome')->middleware('auth');
 Route::get('/home', 'HomeController@index')->name('home');
+
 Route::resource('/profile','ProfileController')->middleware('auth');
 
 Route::resource('/college','CollegeForAdminController')->middleware('auth');
@@ -47,6 +31,8 @@ Route::group(['middleware' => 'auth'], function(){
     Route::get('/search', 'CollegeForStudentController@showSearchForm');
     Route::post('/search', 'CollegeForStudentController@handleSearch');
     Route::get('/available/colleges', 'CollegeForStudentController@showCollegeToStudent');
+    Route::get('/college/{college_id}/info', 'CollegeForStudentController@showCollegeInfo');
+
 });
 
 

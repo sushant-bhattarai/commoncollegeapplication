@@ -17,9 +17,9 @@
                             <tbody>
                                 @foreach($colleges as $college)
                                 <tr>
-                                    <td><a href="#">{{$college->name}}</a></td>
+                                    <td><a href="/college/{{$college->id}}/info">{{$college->name}}</a></td>
                                     <td>
-                                        <a href="#"><button class="btn btn-info">Info</button></a>
+                                        <a href="/college/{{$college->id}}/info"><button class="btn btn-info">Info</button></a>
                                         <a href="#"><button class="btn btn-success">Add to my College</button></a>
                                     </td>
                                 </tr>
