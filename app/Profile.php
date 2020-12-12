@@ -24,4 +24,9 @@ class Profile extends Model
     {
         return $this->belongsTo('App\User');
     }
+
+    public function colleges()
+    {
+        return $this->belongsToMany('App\College');
+    }
 }
