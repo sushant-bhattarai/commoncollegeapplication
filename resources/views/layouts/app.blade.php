@@ -46,7 +46,7 @@
                         <a href="{{ url('/home') }}" class="nav-link">Dashboard</a>
                     </ul>
                     <ul class="navbar-nav mr-auto font-weight-bold">
-                        <a href="#" class="nav-link">My Colleges</a>
+                        <a href="/college/my/{{Auth::user()->id}}" class="nav-link">My Colleges</a>
                     </ul>
                     <ul class="navbar-nav mr-auto font-weight-bold">
                         <a href="{{route('profile.edit', Auth::user()->id)}}" class="nav-link">My Info</a>

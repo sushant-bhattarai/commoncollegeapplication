@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\College;
+use App\Profile;
 use Illuminate\Http\Request;
 use App\Http\Requests\SearchRequest;
 
@@ -35,5 +36,20 @@ class CollegeForStudentController extends Controller
     public function showCollegeInfo($college_id){
         $college = College::find($college_id);
         return view('collegeForStudent.showCollegeInfo', compact('college'));
+    }
+
+    public function addCollege($college_id, $profile_id){
+        // return $college_id;
+
+        $profile = Profile::find($profile_id);
+        $college = College::find($college_id);
+
+        $profile->colleges()->attach($college);
+        return redirect('/home')->withStatus('College added to My Colleges!');
+    }
+
+    public function showMyColleges($profile_id){
+        $profile = Profile::find($profile_id);
+        return view('collegeForStudent.showMyColleges', compact('profile'));
     }
 }

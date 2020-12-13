@@ -7,7 +7,7 @@
             <div class="card">
                 <div class="card-header">
                 Information of {{ $college->name }}
-                    <a class="ml-3" href="#"><button class="btn btn-success">Add to my College</button></a>
+
                 </div>
 
                 <div class="card-body">
