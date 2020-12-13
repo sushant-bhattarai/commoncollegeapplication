@@ -12,6 +12,13 @@ use App\Http\Requests\ImageUploadRequest;
 
 class ProfileController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+        $this->middleware('adminMiddleware');
+        $this->middleware('doNotCreateProfileAgain')->only('create');
+        $this->middleware('fillProfileForm')->except(['create', 'store']);
+    }
     /**
      * Display a listing of the resource.
      *

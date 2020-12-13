@@ -9,6 +9,13 @@ use App\Http\Requests\SearchRequest;
 
 class CollegeForStudentController extends Controller
 {
+
+    public function __construct(){
+        $this->middleware('auth');
+        $this->middleware('adminMiddleware');
+        $this->middleware('fillProfileForm');
+    }
+
     public function showCollegeToStudent(College $colleges){
         $colleges = College::all();
         // return $colleges;

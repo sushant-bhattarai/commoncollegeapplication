@@ -8,6 +8,11 @@ use App\Http\Requests\CollegeRequest;
 
 class CollegeForAdminController extends Controller
 {
+
+    public function __construct(){
+        $this->middleware('auth');
+        $this->middleware('studentMiddleware');
+    }
     /**
      * Display a listing of the resource.
      *

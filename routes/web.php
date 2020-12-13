@@ -20,23 +20,19 @@ Route::get('/', function () {
 });
 
 Auth::routes();
-Route::view('/adminHome', 'adminHome')->name('adminHome')->middleware('auth');
+Route::view('/adminHome', 'adminHome')->name('adminHome')->middleware('auth','studentMiddleware');
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::resource('/profile','ProfileController')->middleware('auth');
+Route::resource('/profile','ProfileController');
 
-Route::resource('/college','CollegeForAdminController')->middleware('auth');
+Route::resource('/college','CollegeForAdminController');
 
-Route::group(['middleware' => 'auth'], function(){
-    Route::get('/search', 'CollegeForStudentController@showSearchForm');
-    Route::post('/search', 'CollegeForStudentController@handleSearch');
-    Route::get('/available/colleges', 'CollegeForStudentController@showCollegeToStudent');
-    Route::get('/college/{college_id}/info', 'CollegeForStudentController@showCollegeInfo');
-    Route::post('/college/{college_id}/add/{profile_id}', 'CollegeForStudentController@addCollege');
-    Route::get('/college/my/{profile_id}', 'CollegeForStudentController@showMyColleges');
-
-});
-
+Route::get('/search', 'CollegeForStudentController@showSearchForm');
+Route::post('/search', 'CollegeForStudentController@handleSearch');
+Route::get('/available/colleges', 'CollegeForStudentController@showCollegeToStudent');
+Route::get('/college/{college_id}/info', 'CollegeForStudentController@showCollegeInfo');
+Route::post('/college/{college_id}/add/{profile_id}', 'CollegeForStudentController@addCollege');
+Route::get('/college/my/{profile_id}', 'CollegeForStudentController@showMyColleges');
 
 
 
