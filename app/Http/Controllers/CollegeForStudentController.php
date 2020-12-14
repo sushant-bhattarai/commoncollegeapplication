@@ -14,6 +14,7 @@ class CollegeForStudentController extends Controller
         $this->middleware('auth');
         $this->middleware('adminMiddleware');
         $this->middleware('fillProfileForm');
+        $this->middleware('myCollege')->only('showMyColleges');
     }
 
     public function showCollegeToStudent(College $colleges){

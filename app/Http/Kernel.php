@@ -68,5 +68,7 @@ class Kernel extends HttpKernel
         'studentMiddleware' => \App\Http\Middleware\StudentMiddleware::class,
         'doNotCreateProfileAgain' => \App\Http\Middleware\DoNotCreateProfileAgain::class,
         'fillProfileForm' => \App\Http\Middleware\FillProfileForm::class,
+        'profileEdit' => \App\Http\Middleware\ProfileEdit::class,
+        'myCollege' => \App\Http\Middleware\MyCollege::class,
     ];
 }

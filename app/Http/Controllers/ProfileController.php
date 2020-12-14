@@ -18,6 +18,7 @@ class ProfileController extends Controller
         $this->middleware('adminMiddleware');
         $this->middleware('doNotCreateProfileAgain')->only('create');
         $this->middleware('fillProfileForm')->except(['create', 'store']);
+        $this->middleware('profileEdit')->only(['edit', 'update', 'show']);
     }
     /**
      * Display a listing of the resource.
