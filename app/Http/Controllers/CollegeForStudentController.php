@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use App\College;
 use App\Profile;
 use Illuminate\Http\Request;
@@ -53,6 +54,10 @@ class CollegeForStudentController extends Controller
         $college = College::find($college_id);
 
         $profile->colleges()->attach($college);
+        
+        $user  = User::findOrFail(Auth::user()->id);
+        $user->has_added = 1;
+        $user->save();
         return redirect('/home')->withStatus('College added to My Colleges!');
     }
 

@@ -21,9 +21,9 @@
                     <ul>
                         <li>This tab is your Dashboard. After you add a college to your list, you will see your application progress here.</li>
                         <li>All colleges will need you to answer the common questions under your <a href="{{route('profile.edit', Auth::user()->id)}}">My Info</a> tab.</li>
-                        <li>To see the available colleges, head over to the <a href="">Available Colleges</a> tab.</li>
+                        <li>To see the available colleges, head over to the <a href="/available/colleges">Available Colleges</a> tab.</li>
                         <li>To search for a college, head over to the <a href="/search">College Search</a> tab.</li>
-                        <li>Once you have added a college, you can complete and submit your application in the <a href="">My Colleges</a> tab.</li>
+                        <li>Once you have added a college, you can complete and submit your application in the <a href="/college/my/{{Auth::user()->id}}">My Colleges</a> tab.</li>
 
                     </ul>
                 </div>

@@ -14,6 +14,7 @@
                         </div>
                     @endif
                     
+                @if(Auth::user()->has_added == 1)
                     <table class="table table-striped">
                         <thead>
                             <tr>
@@ -22,19 +23,21 @@
                             </tr>
                         </thead>
                         <tbody>
-                        @foreach($profile->colleges as $college)
-                            <tr>
-                                <td>
-                                    {{$college->name}}
-                                </td>
-                                <td>
-                                    <button class="btn btn-sm btn-primary">Apply</button>
-                                </td>
-                            </tr>
-                        @endforeach
+                            @foreach($profile->colleges as $college)
+                                <tr>
+                                    <td>
+                                        {{$college->name}}
+                                    </td>
+                                    <td>
+                                        <button class="btn btn-sm btn-primary">Apply</button>
+                                    </td>
+                                </tr>
+                            @endforeach
                         </tbody>
                     </table>
-                    
+                @else
+                    <h5>No colleges added. Add now by clicking <a href="/available/colleges">here.</a></h5>
+                @endif                    
                 </div>
             </div>
         </div>

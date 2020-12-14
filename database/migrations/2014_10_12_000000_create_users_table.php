@@ -21,6 +21,8 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->boolean('is_admin')->default(0);
             $table->integer('profile_id')->nullable();
+            $table->integer('has_added')->nullable();
+            $table->integer('has_applied')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
