@@ -24,12 +24,8 @@
                                     <td>
                                         <a href="/college/{{$college->id}}/info"><button class="btn btn-info">Info</button></a>
 
-                                            @foreach($profile->colleges as $myCollege) 
-                                                @if($myCollege->name != $college->name)
-                                                    <button class="btn btn-success" onclick="handleAdd({{$college->id}}, {{Auth::user()->id}})">Add to my College</button>
-                                                @endif
-                                            
-                                            @endforeach
+                                        <button class="btn btn-success" onclick="handleAdd({{$college->id}}, {{Auth::user()->id}})">Add to my College</button>
+
                                             
                                                
                                         <!-- <form  action="/college/{{$college->id}}/add/{{Auth::user()->id}}" method="post">

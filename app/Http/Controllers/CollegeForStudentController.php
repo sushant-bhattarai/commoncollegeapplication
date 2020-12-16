@@ -7,6 +7,7 @@ use App\College;
 use App\Profile;
 use Illuminate\Http\Request;
 use App\Http\Requests\SearchRequest;
+use Illuminate\Support\Facades\Auth;
 
 class CollegeForStudentController extends Controller
 {
