@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\College;
+use App\Application;
 use Illuminate\Http\Request;
 use App\Http\Requests\CollegeRequest;
 
@@ -55,6 +56,20 @@ class CollegeForAdminController extends Controller
         $college->speciality = $stringOfSpeciality;
         
         $college->save();
+
+        $application = new Application();
+
+        $application->name = $request->name;
+        $application->address = $request->address;
+        $application->phone_number = $request->phone_number;
+        $application->no_of_seats = $request->no_of_seats;
+        $application->description = $request->description;
+
+        //saving specialities
+        $stringOfSpeciality = implode(',', $request->input('speciality'));
+        $application->speciality = $stringOfSpeciality;
+        
+        $application->save();
         return redirect()->route('adminHome')->withStatus('College added!');
 
     }
@@ -105,6 +120,19 @@ class CollegeForAdminController extends Controller
         $college->speciality = $stringOfSpeciality;
         
         $college->save();
+
+        $application = Application::find($id);
+
+        $application->name = $request->name;
+        $application->address = $request->address;
+        $application->phone_number = $request->phone_number;
+        $application->no_of_seats = $request->no_of_seats;
+        $application->description = $request->description;
+
+        //saving specialities
+        $stringOfSpeciality = implode(',', $request->input('speciality'));
+        $application->speciality = $stringOfSpeciality;
+        $application->save();
         return redirect()->route('adminHome')->withStatus('College updated!');
     }
 
@@ -118,6 +146,8 @@ class CollegeForAdminController extends Controller
     {
         $college = College::find($id);
         $college -> delete();
+        $application = Application::find($id);
+        $application -> delete();
         return redirect()->route('adminHome')->withStatus('College deleted!');
     }
 }

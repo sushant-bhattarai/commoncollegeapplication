@@ -29,4 +29,9 @@ class Profile extends Model
     {
         return $this->belongsToMany('App\College');
     }
+
+    public function applications()
+    {
+        return $this->belongsToMany('App\Application');
+    }
 }

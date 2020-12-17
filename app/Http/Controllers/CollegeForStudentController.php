@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\User;
 use App\College;
 use App\Profile;
+use App\Application;
 use Illuminate\Http\Request;
 use App\Http\Requests\SearchRequest;
 use Illuminate\Support\Facades\Auth;
@@ -60,6 +61,22 @@ class CollegeForStudentController extends Controller
         $user->has_added = 1;
         $user->save();
         return redirect('/home')->withStatus('College added to My Colleges!');
+    }
+
+    public function applyCollege($application_id, $profile_id){
+        // return $application_id;
+
+        $profile = Profile::find($profile_id);
+        $application = Application::find($application_id);
+        // return $application;
+
+        $profile->applications()->attach($application);
+        
+        $user  = User::findOrFail(Auth::user()->id);
+        $user->has_applied = 1;
+        $user->save();
+
+        return redirect('/home')->withStatus('You have applied to the college successfully. Please wait for the confirmation.');
     }
 
     public function showMyColleges($profile_id){

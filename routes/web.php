@@ -32,6 +32,7 @@ Route::post('/search', 'CollegeForStudentController@handleSearch');
 Route::get('/available/colleges', 'CollegeForStudentController@showCollegeToStudent');
 Route::get('/college/{college_id}/info', 'CollegeForStudentController@showCollegeInfo');
 Route::post('/college/{college_id}/add/{profile_id}', 'CollegeForStudentController@addCollege');
+Route::post('/college/{college_id}/apply/{profile_id}', 'CollegeForStudentController@applyCollege');
 Route::get('/college/my/{profile_id}', 'CollegeForStudentController@showMyColleges');
 
 
