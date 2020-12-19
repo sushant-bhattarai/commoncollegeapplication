@@ -1,7 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
+
 <?php 
+    $temp = 0;
     $profile = App\Profile::find(Auth::user()->id);
 ?>
 <div class="container">
@@ -18,23 +20,33 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach($colleges as $college)
-                                <tr>
-                                    <td><a href="/college/{{$college->id}}/info">{{$college->name}}</a></td>
-                                    <td>
-                                        <a href="/college/{{$college->id}}/info"><button class="btn btn-info">Info</button></a>
+                            @foreach($colleges as $college)
+                                <?php  $temp=0; ?>
 
-                                        <button class="btn btn-success" onclick="handleAdd({{$college->id}}, {{Auth::user()->id}})">Add to my College</button>
+                                <tr>
+                                    <td>{{ $college->name }}</td>
+                                    <td>
+                                        <button class="btn btn-info">Info</button>
+                                            @foreach($profile->colleges as $myCollege)
+                                                @if($college->name == $myCollege->name)
+                                                    <button class="btn btn-secondary">Added</button>  
+                                                    <?php $temp = 1; ?>
+                                                    @break
+                                                @endif      
+                                            @endforeach
+
+                                        @if($temp != 1)
+                                            <button class="btn btn-success" onclick="handleAdd({{$college->id}}, {{Auth::user()->id}})">Add to my college</button> 
+                                        @endif
 
                                             
-                                               
+                                    </td>
+                                </tr>
+                            @endforeach
                                         <!-- <form  action="/college/{{$college->id}}/add/{{Auth::user()->id}}" method="post">
                                         @csrf
                                             <button type="submit" class="btn btn-success ml-4">Add to my College</button>
                                         </form> -->
-                                    </td>
-                                </tr>
-                                @endforeach
                             </tbody>
                         </table>
                         <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">

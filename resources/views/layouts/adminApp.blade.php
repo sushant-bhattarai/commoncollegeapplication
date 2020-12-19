@@ -48,15 +48,6 @@
                     <ul class="navbar-nav mr-auto font-weight-bold">
                         <a href="{{ route('college.index') }}" class="nav-link">View added colleges</a>
                     </ul>
-                    <ul class="navbar-nav mr-auto font-weight-bold">
-                        <a href="" class="nav-link">Manage Applications</a>
-                    </ul>
-                    <!-- <ul class="navbar-nav mr-auto font-weight-bold">
-                        <a href="" class="nav-link">Available Colleges</a>
-                    </ul>
-                    <ul class="navbar-nav mr-auto font-weight-bold">
-                        <a href="" class="nav-link">College Search</a>
-                    </ul> -->
                     @endauth
 
                     <!-- Right Side Of Navbar -->

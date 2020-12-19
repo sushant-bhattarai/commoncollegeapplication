@@ -157,30 +157,24 @@
                                 <div class="col-md-6">
                                 <?php  
                                     $arrayOfInterest = explode(',', $profile->interest);
-                                ?>
-                                    <input type="checkbox" name="interest[]" value="Academic" id="interest1"
-                                    <?php foreach($arrayOfInterest as $interest){
-                                        echo ($interest == "Academic")?"checked":"";
-                                    } ?>
-                                    ><label for="interest1"> Academic </label><br>
-                                    
-                                    <input type="checkbox" name="interest[]" value="Sports" id="interest2"
+                                ?>                                    
+                                    <input type="checkbox" name="interest[]" value="Sports" id="interest1"
                                     <?php foreach($arrayOfInterest as $interest){
                                         echo ($interest == "Sports")?"checked":"";
                                     } ?>
-                                    ><label for="interest2"> Sports </label><br>
+                                    ><label for="interest1"> Sports </label><br>
                                     
-                                    <input type="checkbox" name="interest[]" value="ECA" id="interest3"
+                                    <input type="checkbox" name="interest[]" value="ECA" id="interest2"
                                     <?php foreach($arrayOfInterest as $interest){
                                         echo ($interest == "ECA")?"checked":"";
                                     } ?>
-                                    ><label for="interest3"> ECA </label><br>
+                                    ><label for="interest2"> ECA </label><br>
                                     
-                                    <input type="checkbox" name="interest[]" value="Leadership" id="interest4"
+                                    <input type="checkbox" name="interest[]" value="Leadership" id="interest3"
                                     <?php foreach($arrayOfInterest as $interest){
                                         echo ($interest == "Leadership")?"checked":"";
                                     } ?>
-                                    ><label for="interest4"> Leadership </label><br>
+                                    ><label for="interest3"> Leadership </label><br>
 
                                     @error('interest')
                                         <span class="invalid-feedback" role="alert">

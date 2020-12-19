@@ -76,7 +76,7 @@ class CollegeForStudentController extends Controller
         $user->has_applied = 1;
         $user->save();
 
-        return redirect('/home')->withStatus('You have applied to the college successfully. Please wait for the confirmation.');
+        return redirect('/home')->withStatus('You have applied to the college successfully.');
     }
 
     public function showMyColleges($profile_id){

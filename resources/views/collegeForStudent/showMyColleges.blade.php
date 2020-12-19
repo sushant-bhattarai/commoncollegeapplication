@@ -1,6 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
+<?php 
+    $temp = 0;
+?>
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-10">
@@ -24,12 +27,24 @@
                         </thead>
                         <tbody>
                             @foreach($profile->colleges as $college)
+                            <?php  $temp=0; ?>
                                 <tr>
                                     <td>
                                         {{$college->name}}
                                     </td>
                                     <td>
-                                        <button class="btn btn-success" onclick="handleApply({{$college->id}}, {{Auth::user()->id}})">Apply</button>
+                                    @foreach($profile->applications as $myCollege)
+                                        @if($college->name == $myCollege->name)
+                                            <button class="btn btn-secondary">Applied</button>  
+                                            <?php $temp = 1; ?>
+                                            @break
+                                        @endif      
+                                    @endforeach
+
+                                    @if($temp != 1)
+                                        <button class="btn btn-success" onclick="handleApply({{$college->id}}, {{Auth::user()->id}})">Apply</button> 
+                                    @endif
+                                        <!-- <button class="btn btn-success" onclick="handleApply({{$college->id}}, {{Auth::user()->id}})">Apply</button> -->
                                     </td>
                                 </tr>
                             @endforeach
