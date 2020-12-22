@@ -14,6 +14,12 @@
                 </div>
 
                 <div class="card-body">
+                    @if (session('status'))
+                        <div class="alert alert-success" role="alert">
+                            {{ session('status') }}
+                        </div>
+                    @endif
+                    
                 <div class="float-right mr-5">
                     <a target="_blank" href="/images/your_photos/{{$profile->your_photo}}">
                         <img src="/images/your_photos/{{$profile->your_photo}}" alt="{{$profile->your_photo}}"

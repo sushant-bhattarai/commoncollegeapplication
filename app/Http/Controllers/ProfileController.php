@@ -208,7 +208,7 @@ class ProfileController extends Controller
 
         $profile->save();
 
-        return redirect()->route('home')->withStatus('Profile info updated!');
+        return redirect()->route('profile.show', Auth::user()->id)->withStatus('Profile info updated!');
     }
 
     /**
