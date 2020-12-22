@@ -48,7 +48,6 @@ class ProfileController extends Controller
      */
     public function store(ImageUploadRequest $request)
     {
-        
         $profile = new Profile();
         
         $profile->id = Auth::user()->id;
@@ -68,10 +67,15 @@ class ProfileController extends Controller
         $request->your_photo->move(public_path('/images/your_photos'), $your_photo);
         $profile->your_photo = $your_photo;
 
-        //citizenship_photo upload
-        $citizenship_photo = 'citizenship_photo_'.Auth::user()->id.'_'.time().'_'.$myArray[0].'.'.$request->citizenship_photo->getClientOriginalExtension();
-        $request->citizenship_photo->move(public_path('/images/citizenship_photos'), $citizenship_photo);
-        $profile->citizenship_photo = $citizenship_photo;
+        //citizenship_front upload
+        $citizenship_front = 'citizenship_front_'.Auth::user()->id.'_'.time().'_'.$myArray[0].'.'.$request->citizenship_front->getClientOriginalExtension();
+        $request->citizenship_front->move(public_path('/images/citizenship_fronts'), $citizenship_front);
+        $profile->citizenship_front = $citizenship_front;
+
+        //citizenship_back upload
+        $citizenship_back = 'citizenship_back_'.Auth::user()->id.'_'.time().'_'.$myArray[0].'.'.$request->citizenship_back->getClientOriginalExtension();
+        $request->citizenship_back->move(public_path('/images/citizenship_backs'), $citizenship_back);
+        $profile->citizenship_back = $citizenship_back;
 
         //marksheet_photo upload
         $marksheet_photo = 'marksheet_photo_'.Auth::user()->id.'_'.time().'_'.$myArray[0].'.'.$request->marksheet_photo->getClientOriginalExtension();
@@ -81,7 +85,7 @@ class ProfileController extends Controller
         //saving interests by implode function:
         if($request->has('interest')){
             $stringOfInterest = implode(',', $request->input('interest'));
-            $profile->interest = $stringOfInterest;
+            $profile->interest = $stringOfInterest.',Academic';
         }
         else{
             $profile->interest = "Academic";
@@ -112,7 +116,8 @@ class ProfileController extends Controller
      */
     public function show($id)
     {
-        //
+        $profile = Profile::find($id);
+        return view('profile.showMyProfile', compact('profile'));
     }
 
     /**
@@ -160,11 +165,18 @@ class ProfileController extends Controller
             $profile->your_photo = $your_photo;
         }
 
-        //citizenship_photo upload
-        if($request->has('citizenship_photo')){
-            $citizenship_photo = 'citizenship_photo_'.Auth::user()->id.'_'.time().'_'.$myArray[0].'.'.$request->citizenship_photo->getClientOriginalExtension();
-            $request->citizenship_photo->move(public_path('/images/citizenship_photos'), $citizenship_photo);
-            $profile->citizenship_photo = $citizenship_photo;
+        //citizenship_front upload
+        if($request->has('citizenship_front')){
+            $citizenship_front = 'citizenship_front_'.Auth::user()->id.'_'.time().'_'.$myArray[0].'.'.$request->citizenship_front->getClientOriginalExtension();
+            $request->citizenship_front->move(public_path('/images/citizenship_fronts'), $citizenship_front);
+            $profile->citizenship_front = $citizenship_front;
+        }
+
+        //citizenship_back upload
+        if($request->has('citizenship_back')){
+            $citizenship_back = 'citizenship_back_'.Auth::user()->id.'_'.time().'_'.$myArray[0].'.'.$request->citizenship_back->getClientOriginalExtension();
+            $request->citizenship_back->move(public_path('/images/citizenship_backs'), $citizenship_back);
+            $profile->citizenship_back = $citizenship_back;
         }
 
         //marksheet_photo upload
@@ -177,7 +189,7 @@ class ProfileController extends Controller
         //saving interests by implode function:
         if($request->has('interest')){
             $stringOfInterest = implode(',', $request->input('interest'));
-            $profile->interest = $stringOfInterest;
+            $profile->interest = $stringOfInterest.',Academic';
         }
         else{
             $profile->interest = "Academic";

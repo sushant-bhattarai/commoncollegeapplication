@@ -29,7 +29,6 @@ class ImageEditRequest extends FormRequest
             'dob' => 'required|date',
             'phone_number' => 'required|digits:10',
             'school_name' => 'required',
-            'interest' => 'required',
         ];
     }
 }

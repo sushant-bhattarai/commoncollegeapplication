@@ -94,21 +94,44 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="citizenship_photo" class="col-md-4 col-form-label text-md-right">{{ __('Citizenship Copy') }}</label>
+                            <label for="citizenship_front" class="col-md-4 col-form-label text-md-right">{{ __('Citizenship Front') }}</label>
 
                             <div class="col-md-6">
-                                <input type="file" name="citizenship_photo" id="citizenship_photo" onchange="loadFile2(event)" class="form-control @error('citizenship_photo') is-invalid @enderror" value="{{ old('citizenship_photo') }}" ><br>
+                                <input type="file" name="citizenship_front" id="citizenship_front" onchange="loadFile2(event)" class="form-control @error('citizenship_front') is-invalid @enderror" value="{{ old('citizenship_front') }}" ><br>
                                 <img id="output2" class = "img-fluid"/>
 
                                 <script>
                                     var loadFile2 = function(event2) {
-                                        var citizenship_photo = document.getElementById('output2');
-                                        citizenship_photo.src = URL.createObjectURL(event.target.files[0]);
+                                        var citizenship_front = document.getElementById('output2');
+                                        citizenship_front.src = URL.createObjectURL(event.target.files[0]);
                                     };
                                 </script>	
 
 
-                                @error('citizenship_photo')
+                                @error('citizenship_front')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="citizenship_back" class="col-md-4 col-form-label text-md-right">{{ __('Citizenship Back') }}</label>
+
+                            <div class="col-md-6">
+                                <input type="file" name="citizenship_back" id="citizenship_back" onchange="loadFile4(event)" class="form-control @error('citizenship_back') is-invalid @enderror" value="{{ old('citizenship_back') }}" ><br>
+                                <img id="output4" class = "img-fluid"/>
+
+                                <script>
+                                    var loadFile4 = function(event2) {
+                                        var citizenship_back = document.getElementById('output4');
+                                        citizenship_back.src = URL.createObjectURL(event.target.files[0]);
+                                    };
+                                </script>	
+
+
+                                @error('citizenship_back')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>

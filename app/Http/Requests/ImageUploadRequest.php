@@ -30,7 +30,8 @@ class ImageUploadRequest extends FormRequest
             'phone_number' => 'required|digits:10|unique:profiles',
             'school_name' => 'required',
             'your_photo' => 'required|image',
-            'citizenship_photo' => 'required|image',
+            'citizenship_front' => 'required|image',
+            'citizenship_back' => 'required|image',
             'marksheet_photo' => 'required|image',
         ];
     }
@@ -38,7 +39,7 @@ class ImageUploadRequest extends FormRequest
     public function messages()
     {
         return [
-            'gender.required' => 'Gender hala na',
+            'gender.required' => 'Please enter your gender.',
         ];
     }
 }

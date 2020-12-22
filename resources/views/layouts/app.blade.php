@@ -48,8 +48,11 @@
                     <ul class="navbar-nav mr-auto font-weight-bold">
                         <a href="/college/my/{{Auth::user()->id}}" class="nav-link">My Colleges</a>
                     </ul>
-                    <ul class="navbar-nav mr-auto font-weight-bold">
+                    <!-- <ul class="navbar-nav mr-auto font-weight-bold">
                         <a href="{{route('profile.edit', Auth::user()->id)}}" class="nav-link">My Info</a>
+                    </ul> -->
+                    <ul class="navbar-nav mr-auto font-weight-bold">
+                        <a href="{{route('profile.show', Auth::user()->id)}}" class="nav-link">My Info</a>
                     </ul>
                     <ul class="navbar-nav mr-auto font-weight-bold">
                         <a href="/available/colleges" class="nav-link">Available Colleges</a>

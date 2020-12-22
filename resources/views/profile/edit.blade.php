@@ -75,9 +75,19 @@
                                 <label for="your_photo" class="col-md-4 col-form-label text-md-right">{{ __('Your Photo') }}</label>
 
                                 <div class="col-md-6">
+
+                                    <div class="float-right">
+                                        <a target="_blank" href="/images/your_photos/{{$profile->your_photo}}">
+                                            <img src="/images/your_photos/{{$profile->your_photo}}" alt="{{$profile->your_photo}}"
+                                            style="border: 1px solid #ddd;
+                                                    border-radius: 4px;
+                                                    padding: 5px;
+                                                    width: 150px;">
+                                        </a>
+                                    </div>
+
                                     <input type="file" name="your_photo" id="your_photo" onchange="loadFile1(event)" class="form-control @error('your_photo') is-invalid @enderror">
-                                    Old photo: <a href="/images/your_photos/{{$profile->your_photo}}" target="_blank">{{$profile->your_photo}}</a>
-                                    <br>New Uploaded photo: <img id="output1" class = "img-fluid"/>
+                                    New Uploaded photo: <img id="output1" class = "img-fluid"/>
                                     <script>
                                         var loadFile1 = function(event) {
                                             var your_photo = document.getElementById('output1');
@@ -94,20 +104,61 @@
                             </div>
 
                             <div class="form-group row">
-                                <label for="citizenship_photo" class="col-md-4 col-form-label text-md-right">{{ __('Citizenship Copy') }}</label>
+                                <label for="citizenship_front" class="col-md-4 col-form-label text-md-right">{{ __('Citizenship Front') }}</label>
 
                                 <div class="col-md-6">
-                                    <input type="file" name="citizenship_photo" id="citizenship_photo" onchange="loadFile2(event)" class="form-control @error('citizenship_photo') is-invalid @enderror">
-                                    Old photo: <a href="/images/citizenship_photos/{{$profile->citizenship_photo}}" target="_blank">{{$profile->citizenship_photo}}</a>
-                                    <br>New Uploaded photo: <img id="output2" class = "img-fluid"/>
+
+                                    <div class="float-right">
+                                        <a target="_blank" href="/images/citizenship_fronts/{{$profile->citizenship_front}}">
+                                            <img src="/images/citizenship_fronts/{{$profile->citizenship_front}}" alt="{{$profile->citizenship_front}}"
+                                            style="border: 1px solid #ddd;
+                                                    border-radius: 4px;
+                                                    padding: 5px;
+                                                    width: 150px;">
+                                        </a>
+                                    </div>
+
+
+                                    <input type="file" name="citizenship_front" id="citizenship_front" onchange="loadFile2(event)" class="form-control @error('citizenship_front') is-invalid @enderror">
+                                    New Uploaded photo: <img id="output2" class = "img-fluid"/>
                                     <script>
                                         var loadFile2 = function(event) {
-                                            var citizenship_photo = document.getElementById('output2');
-                                            citizenship_photo.src = URL.createObjectURL(event.target.files[0]);
+                                            var citizenship_front = document.getElementById('output2');
+                                            citizenship_front.src = URL.createObjectURL(event.target.files[0]);
                                         };
                                     </script>
 
-                                    @error('citizenship_photo')
+                                    @error('citizenship_front')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="citizenship_back" class="col-md-4 col-form-label text-md-right">{{ __('Citizenship Back') }}</label>
+
+                                <div class="col-md-6">
+                                    <div class="float-right">
+                                        <a target="_blank" href="/images/citizenship_backs/{{$profile->citizenship_back}}">
+                                            <img src="/images/citizenship_backs/{{$profile->citizenship_back}}" alt="{{$profile->citizenship_back}}"
+                                            style="border: 1px solid #ddd;
+                                                    border-radius: 4px;
+                                                    padding: 5px;
+                                                    width: 150px;">
+                                        </a>
+                                    </div>
+                                    <input type="file" name="citizenship_back" id="citizenship_back" onchange="loadzFile4(event)" class="form-control @error('citizenship_back') is-invalid @enderror">
+                                    New Uploaded photo: <img id="output4" class = "img-fluid"/>
+                                    <script>
+                                        var loadFile4 = function(event) {
+                                            var citizenship_back = document.getElementById('output4');
+                                            citizenship_back.src = URL.createObjectURL(event.target.files[0]);
+                                        };
+                                    </script>
+
+                                    @error('citizenship_back')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
@@ -133,9 +184,17 @@
                                 <label for="marksheet_photo" class="col-md-4 col-form-label text-md-right">{{ __('Marksheet copy') }}</label>
 
                                 <div class="col-md-6">
+                                    <div class="float-right">
+                                        <a target="_blank" href="/images/marksheet_photos/{{$profile->marksheet_photo}}">
+                                            <img src="/images/marksheet_photos/{{$profile->marksheet_photo}}" alt="{{$profile->marksheet_photo}}"
+                                            style="border: 1px solid #ddd;
+                                                    border-radius: 4px;
+                                                    padding: 5px;
+                                                    width: 150px;">
+                                        </a>
+                                    </div>
                                     <input type="file" name="marksheet_photo" id="marksheet_photo" onchange="loadFile3(event)" class="form-control @error('marksheet_photo') is-invalid @enderror">
-                                    Old photo: <a href="/images/marksheet_photos/{{$profile->marksheet_photo}}" target="_blank">{{$profile->marksheet_photo}}</a>
-                                    <br>New Uploaded photo: <img id="output3" class = "img-fluid"/>
+                                    New Uploaded photo: <img id="output3" class = "img-fluid"/>
                                     <script>
                                         var loadFile3 = function(event) {
                                             var marksheet_photo = document.getElementById('output3');

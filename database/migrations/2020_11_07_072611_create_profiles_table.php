@@ -20,7 +20,8 @@ class CreateProfilesTable extends Migration
             $table->string('dob');
             $table->string('phone_number')->unique();
             $table->string('your_photo');
-            $table->string('citizenship_photo');
+            $table->string('citizenship_front');
+            $table->string('citizenship_back');
             $table->string('school_name');
             $table->string('marksheet_photo');
             $table->string('interest');
