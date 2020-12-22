@@ -160,6 +160,7 @@ class ProfileController extends Controller
 
         //your_photo upload
         if($request->has('your_photo')){
+            unlink(public_path('/images/your_photos/'.$profile->your_photo));
             $your_photo = 'your_photo_'.Auth::user()->id.'_'.time().'_'.$myArray[0].'.'.$request->your_photo->getClientOriginalExtension();
             $request->your_photo->move(public_path('/images/your_photos'), $your_photo);
             $profile->your_photo = $your_photo;
@@ -167,6 +168,7 @@ class ProfileController extends Controller
 
         //citizenship_front upload
         if($request->has('citizenship_front')){
+            unlink(public_path('/images/citizenship_fronts/'.$profile->citizenship_front));
             $citizenship_front = 'citizenship_front_'.Auth::user()->id.'_'.time().'_'.$myArray[0].'.'.$request->citizenship_front->getClientOriginalExtension();
             $request->citizenship_front->move(public_path('/images/citizenship_fronts'), $citizenship_front);
             $profile->citizenship_front = $citizenship_front;
@@ -174,6 +176,7 @@ class ProfileController extends Controller
 
         //citizenship_back upload
         if($request->has('citizenship_back')){
+            unlink(public_path('/images/citizenship_backs/'.$profile->citizenship_back));
             $citizenship_back = 'citizenship_back_'.Auth::user()->id.'_'.time().'_'.$myArray[0].'.'.$request->citizenship_back->getClientOriginalExtension();
             $request->citizenship_back->move(public_path('/images/citizenship_backs'), $citizenship_back);
             $profile->citizenship_back = $citizenship_back;
@@ -181,6 +184,7 @@ class ProfileController extends Controller
 
         //marksheet_photo upload
         if($request->has('marksheet_photo')){
+            unlink(public_path('/images/marksheet_photos/'.$profile->marksheet_photo));
             $marksheet_photo = 'marksheet_photo_'.Auth::user()->id.'_'.time().'_'.$myArray[0].'.'.$request->marksheet_photo->getClientOriginalExtension();
             $request->marksheet_photo->move(public_path('/images/marksheet_photos'), $marksheet_photo);
             $profile->marksheet_photo = $marksheet_photo;
