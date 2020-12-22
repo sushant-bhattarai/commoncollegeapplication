@@ -19,7 +19,7 @@
 
                     @if(Auth::user()->has_applied == 1)
                         <h6>Your Application Progress:</h6>
-                            <table class="table table-striped">
+                            <table class="table table-light">
                                 <thead>
                                     <tr>
                                         <th>College Name</th>

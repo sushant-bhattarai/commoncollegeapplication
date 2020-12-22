@@ -13,7 +13,7 @@
                 <div class="card-body">
                 
 
-                <table class="table table-striped">
+                <table class="table table-light">
                     <tbody>
                         <tr>
                             <td><strong>Name</strong></td>

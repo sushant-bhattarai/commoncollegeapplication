@@ -60,7 +60,7 @@ class CollegeForStudentController extends Controller
         $user  = User::findOrFail(Auth::user()->id);
         $user->has_added = 1;
         $user->save();
-        return redirect('/home')->withStatus('College added to My Colleges!');
+        return redirect()->route('myCollege', Auth::user()->id)->withStatus('College added to My Colleges!');
     }
 
     public function applyCollege($application_id, $profile_id){
@@ -83,4 +83,25 @@ class CollegeForStudentController extends Controller
         $profile = Profile::find($profile_id);
         return view('collegeForStudent.showMyColleges', compact('profile'));
     }
+
+    public function deleteFromMyCollege($college_id, $profile_id){
+        // return $college_id;
+
+        $profile = Profile::find($profile_id);
+        $college = College::find($college_id);
+        // return $profile->colleges()->count();
+
+        $user  = User::findOrFail(Auth::user()->id);
+        if($profile->colleges()->count() == 1){
+            $user->has_added = NULL;
+            $user->save();
+        }
+        $profile->colleges()->detach($college);
+        return redirect()->route('myCollege', Auth::user()->id)->withStatus('College deleted from My Colleges!');
+    }
+
+    public function showApplicationForm($college_id, $profile_id){
+
+    }
+    
 }

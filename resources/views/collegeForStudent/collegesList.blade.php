@@ -12,7 +12,7 @@
             <div class="card">
                 <div class="card-header">Available Colleges</div>
                     <div class="card-body">
-                        <table class="table table-striped">
+                        <table class="table table-light">
                             <thead>
                                 <tr>
                                     <th>Name</th>
@@ -24,9 +24,9 @@
                                 <?php  $temp=0; ?>
 
                                 <tr>
-                                    <td>{{ $college->name }}</td>
+                                    <td><a href="/college/{{$college->id}}/info">{{$college->name}}</a></td>
                                     <td>
-                                        <button class="btn btn-info">Info</button>
+                                        <a href="/college/{{$college->id}}/info"><button class="btn btn-info">Info</button></a>
                                             @foreach($profile->colleges as $myCollege)
                                                 @if($college->name == $myCollege->name)
                                                     <button class="btn btn-secondary">Added</button>  

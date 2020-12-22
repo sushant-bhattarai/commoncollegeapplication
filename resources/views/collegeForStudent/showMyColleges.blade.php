@@ -18,7 +18,7 @@
                     @endif
                     
                 @if(Auth::user()->has_added == 1)
-                    <table class="table table-striped">
+                    <table class="table table-light">
                         <thead>
                             <tr>
                                 <th>College Name</th>
@@ -30,9 +30,10 @@
                             <?php  $temp=0; ?>
                                 <tr>
                                     <td>
-                                        {{$college->name}}
+                                    <a href="/college/{{$college->id}}/info">{{$college->name}}</a>
                                     </td>
                                     <td>
+                                    <a href="/college/{{$college->id}}/info"><button class="btn btn-info">Info</button></a>
                                     @foreach($profile->applications as $myCollege)
                                         @if($college->name == $myCollege->name)
                                             <button class="btn btn-secondary">Applied</button>  
@@ -44,7 +45,7 @@
                                     @if($temp != 1)
                                         <button class="btn btn-success" onclick="handleApply({{$college->id}}, {{Auth::user()->id}})">Apply</button> 
                                     @endif
-                                        <!-- <button class="btn btn-success" onclick="handleApply({{$college->id}}, {{Auth::user()->id}})">Apply</button> -->
+                                    <button class="btn btn-danger" onclick="handleDelete({{$college->id}}, {{Auth::user()->id}})">Delete</button> 
                                     </td>
                                 </tr>
                             @endforeach
@@ -62,11 +63,33 @@
                                         </button>
                                     </div>
                                     <div class="modal-body">
-                                    <p class="text-center strong">Are you sure you want to apply to this college?</p>
+                                    <p class="text-center strong text-red">Are you sure you want to apply to this college? You cannot cancel the application.</p>
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">No, Cancel</button>
                                         <button type="submit" class="btn btn-success">Yes, Apply</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="modal fade" id="deleteModalCollege" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <form action="" method="POST" id="deleteCollegeForm">
+                            @csrf
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="deleteModalLabel">Delete College from My Colleges</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                    <p class="text-center strong text-red">Are you sure you want to delete this college from My Colleges?</p>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">No, Cancel</button>
+                                        <button type="submit" class="btn btn-danger">Yes, Delete</button>
                                     </div>
                                 </div>
                             </form>
@@ -89,6 +112,14 @@
             var form = document.getElementById('applyCollegeForm')
                 form.action='/college/' + application_id + '/apply/' + user_id
             $('#deleteModal').modal('show')
+
+        }
+        
+        function handleDelete(college_id, user_id)
+        {
+            var form = document.getElementById('deleteCollegeForm')
+                form.action='/college/' + college_id + '/delete/' + user_id
+            $('#deleteModalCollege').modal('show')
 
         }
     

@@ -67,12 +67,12 @@ section {
 body {
   margin: 0;
   font-family: "Nunito", sans-serif;
-  font-size: 0.9rem;
-  font-weight: 400;
+  font-size: 0.95rem;
+  font-weight: 425;
   line-height: 1.6;
   color: #212529;
   text-align: left;
-  background-color: #f8fafc;
+  background-color: rgba(75, 42, 14, 0.596);
 }
 
 [tabindex="-1"]:focus:not(:focus-visible) {
