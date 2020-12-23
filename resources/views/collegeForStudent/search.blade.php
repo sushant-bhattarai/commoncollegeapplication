@@ -45,7 +45,7 @@
                                 <tr>
                                     <td><a href="#">{{$college->name}}</a></td>
                                     <td>
-                                        <a href="/college/{{$college->id}}/info"><button class="btn btn-info">Info</button></a>
+                                        <a href="/college/{{$college->id}}/info"><button class="btn btn-dark">Info</button></a>
                                         @foreach($profile->colleges as $myCollege)
                                                 @if($college->name == $myCollege->name)
                                                     <button class="btn btn-secondary">Added</button>  

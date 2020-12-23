@@ -31,8 +31,8 @@
                                 @foreach($profile->applications as $college)
                                     <tr>
                                         <td>{{$college->name}}</td>
-                                        <td><button class="btn btn-secondary">View application</button></td>
-                                        <td><button class="btn btn-secondary">Applied</button></td>
+                                        <td><button class="btn btn-dark">View application</button></td>
+                                        <td><button class="btn btn-dark">Applied</button></td>
                                     </tr>
                                 @endforeach
                                 </tbody>
