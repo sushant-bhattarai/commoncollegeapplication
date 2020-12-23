@@ -10,7 +10,7 @@
             <div class="card">
                 <div class="card-header">
                 Profile : {{ Auth::user()->name }}
-                <a class="ml-4" href="{{route('profile.edit', Auth::user()->id)}}"><button class="btn btn-primary">Edit your profile</button></a>
+                <a class="ml-4" href="{{route('profile.edit', Auth::user()->id)}}"><button class="btn btn-dark">Edit your profile</button></a>
                 </div>
 
                 <div class="card-body">

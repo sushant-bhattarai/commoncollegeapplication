@@ -22,16 +22,16 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+        <nav class="navbar navbar-expand-md navbar-light bg-customColor shadow-sm">
             <div class="container">
                 @guest
                     <a class="navbar-brand" href="{{ url('/') }}">
-                        <img src="/images/logo.jpg" alt="Common College App">
+                        <img src="/images/svglogo.svg" alt="Common College App">
                         <!-- {{ config('app.name', 'Laravel') }} -->
                     </a>
                 @else
                     <a class="navbar-brand" href="{{ route('adminHome') }}">
-                        <img src="/images/logo.jpg" alt="Common College App">
+                        <img src="/images/svglogo.svg" alt="Common College App">
                         <!-- {{ config('app.name', 'Laravel') }} -->
                     </a>
                 @endguest

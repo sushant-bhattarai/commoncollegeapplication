@@ -23,9 +23,9 @@
                                     <tr>
                                         <td><a href="{{route('college.show', $college->id) }}">{{ $college->name }}</a></td>
                                         <td>
-                                            <a href="{{route('college.show', $college->id) }}"><button class="btn btn-sm btn-primary">Info</button></a>
-                                            <a href="{{route('college.edit', $college->id) }}"><button class="btn btn-sm btn-secondary">Edit</button></a>
-                                            <button class="btn btn-sm btn-danger" onclick="handleDelete({{ $college->id }})">Delete</button>
+                                            <a href="{{route('college.show', $college->id) }}"><button class="btn btn-dark">Info</button></a>
+                                            <a href="{{route('college.edit', $college->id) }}"><button class="btn btn-secondary">Edit</button></a>
+                                            <button class="btn btn-danger" onclick="handleDelete({{ $college->id }})">Delete</button>
                                         </td>
                                     </tr>
                                 @endforeach

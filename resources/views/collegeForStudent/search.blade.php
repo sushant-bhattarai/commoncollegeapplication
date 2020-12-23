@@ -17,7 +17,7 @@
                         <div class="input-group">
                             <input type="text" class="form-control @error('q') is-invalid @enderror" name="q"
                             placeholder="Search according to name or address"> <span class="input-group-btn">
-                                <button type="submit" class="btn btn-primary ml-2">
+                                <button type="submit" class="btn btn-dark ml-2">
                                     <span class="glyphicon glyphicon-search">Search</span>
                                 </button>
                             </span>
