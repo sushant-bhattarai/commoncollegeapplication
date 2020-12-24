@@ -36,5 +36,8 @@ Route::post('/college/{college_id}/delete/{profile_id}', 'CollegeForStudentContr
 Route::post('/college/{college_id}/apply/{profile_id}', 'CollegeForStudentController@applyCollege');
 Route::get('/college/my/{profile_id}', 'CollegeForStudentController@showMyColleges')->name('myCollege');
 
+Route::get('/users', 'CollegeForAdminController@showUsers');
+Route::get('/user/{user_id}', 'CollegeForAdminController@showOneUser');
+
 
 

@@ -22,7 +22,7 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-customColor shadow-sm">
+        <nav class="navbar navbar-expand-md navbar-light bg-customColor shadow-sm" >
             <div class="container">
                 @guest
                     <a class="navbar-brand" href="{{ url('/') }}">
@@ -47,6 +47,9 @@
                     </ul>
                     <ul class="navbar-nav mr-auto font-weight-bold">
                         <a href="{{ route('college.index') }}" class="nav-link">View added colleges</a>
+                    </ul>
+                    <ul class="navbar-nav mr-auto font-weight-bold">
+                        <a href="/users" class="nav-link">View registered users</a>
                     </ul>
                     @endauth
 
@@ -92,5 +95,18 @@
             @yield('content')
         </main>
     </div>
+    <div style="position: fixed;
+                left: 0;
+                bottom: 0;
+                padding:15px;
+                width: 100%;
+                background: rgb(17,15,60);
+                background: linear-gradient(90deg, rgba(17,15,60,1) 0%, rgba(40,28,74,1) 20%, rgba(6,97,116,1) 100%);
+                color: white;
+                text-align: center;">
+        &copy; 2020 Copyright :
+        <a class="text-white" href="{{route('home')}}">Common College Application</a>
+    </div>
+    
 </body>
 </html>

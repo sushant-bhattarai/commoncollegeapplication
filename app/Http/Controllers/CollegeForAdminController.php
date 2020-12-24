@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\College;
+use App\Profile;
+use App\User;
 use App\Application;
 use Illuminate\Http\Request;
 use App\Http\Requests\CollegeRequest;
@@ -150,4 +152,17 @@ class CollegeForAdminController extends Controller
         $application -> delete();
         return redirect()->route('adminHome')->withStatus('College deleted!');
     }
+
+    public function showUsers(){
+        $users = User::all();
+        // return $users;
+        return view('collegeForAdmin.showUsers', compact('users'));
+    }
+
+    public function showOneUser($user_id){
+        // return $user_id;
+        $user = User::find($user_id);
+        return view('collegeForAdmin.showOneUser', compact('user'));
+    }
+
 }
