@@ -72,7 +72,9 @@ body {
   line-height: 1.6;
   color: #212529;
   text-align: left;
-  background-color: #53799e;
+  /* background-color: #53799e; */
+  background: rgb(2,0,36);
+  background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(35,23,65,1) 20%, rgba(0,212,255,1) 100%);
 }
 
 [tabindex="-1"]:focus:not(:focus-visible) {
@@ -1960,7 +1962,7 @@ pre code {
 .table-light,
 .table-light > th,
 .table-light > td {
-  background-color: #62a9d8;
+  background-color: #95c6e7;
 }
 
 .table-light th,
@@ -4941,10 +4943,10 @@ input[type=button].btn-block {
   flex-direction: column;
   min-width: 0;
   word-wrap: break-word;
-  background-color: #62a9d8;
+  background-color: #95c6e7;
   background-clip: border-box;
   border: 1px solid rgba(0, 0, 0, 0.125);
-  border-radius: 0.25rem;
+  border-radius: 1rem;
 }
 
 .card > hr {
@@ -6962,7 +6964,8 @@ a.close.disabled {
 }
 
 .bg-customColor {
-  background-color: #082949 !important;
+  background: rgb(17,15,60);
+  background: linear-gradient(90deg, rgba(17,15,60,1) 0%, rgba(40,28,74,1) 20%, rgba(6,97,116,1) 100%);
 }
 
 a.bg-primary:hover,

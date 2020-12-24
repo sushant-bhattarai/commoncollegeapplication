@@ -104,5 +104,19 @@
             @yield('content')
         </main>
     </div>
+
+    <div style="position: fixed;
+                left: 0;
+                bottom: 0;
+                padding:15px;
+                width: 100%;
+                height:50px;
+                background: rgb(17,15,60);
+                background: linear-gradient(90deg, rgba(17,15,60,1) 0%, rgba(40,28,74,1) 20%, rgba(6,97,116,1) 100%);
+                color: white;
+                text-align: center;">
+        &copy; 2020 Copyright :
+        <a class="text-white" href="{{route('home')}}">Common College Application</a>
+    </div>
 </body>
 </html>
