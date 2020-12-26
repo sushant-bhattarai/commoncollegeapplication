@@ -9,7 +9,6 @@
 
                 <div class="card-body">
                     @if($colleges->count() > 0)
-                    <a class="" href="{{route('college.create')}}">Add College</a><br><br>
                         <table class="table table-light">
                             <thead>
                                 <tr>

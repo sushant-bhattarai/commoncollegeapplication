@@ -19,10 +19,19 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <style>
+        .navbar-sticky-top
+        {
+            position: fixed;
+            z-index: 999;
+            opacity:10;
+            width: 100%;
+        }
+    </style>
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-customColor shadow-sm" >
+        <nav class="navbar navbar-expand-md navbar-light bg-customColor shadow-sm navbar-sticky-top" >
             <div class="container">
                 @guest
                     <a class="navbar-brand" href="{{ url('/') }}">
@@ -92,7 +101,9 @@
         </nav>
 
         <main class="py-4">
+        <br><br>
             @yield('content')
+        <br><br>
         </main>
     </div>
     <div style="position: fixed;
