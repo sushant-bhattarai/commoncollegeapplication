@@ -32,6 +32,7 @@ class Profile extends Model
 
     public function applications()
     {
-        return $this->belongsToMany('App\Application');
+        return $this->belongsToMany('App\Application')
+                    ->withPivot('priority');
     }
 }

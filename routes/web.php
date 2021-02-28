@@ -29,7 +29,7 @@ Route::resource('/college','CollegeForAdminController');
 
 Route::get('/search', 'CollegeForStudentController@showSearchForm');
 Route::post('/search', 'CollegeForStudentController@handleSearch');
-Route::get('/available/colleges', 'CollegeForStudentController@showCollegeToStudent');
+Route::get('/available/colleges', 'CollegeForStudentController@recommend');
 Route::get('/college/{college_id}/info', 'CollegeForStudentController@showCollegeInfo');
 Route::post('/college/{college_id}/add/{profile_id}', 'CollegeForStudentController@addCollege');
 Route::post('/college/{college_id}/delete/{profile_id}', 'CollegeForStudentController@deleteFromMyCollege');
