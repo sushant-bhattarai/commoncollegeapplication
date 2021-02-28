@@ -10,8 +10,8 @@
     <div class="row justify-content-center">
         <div class="col-md-10">
             <div class="card">
-                <div class="card-header">Recommended Colleges</div>
-                    <div class="card-body">
+                <div class="card-header">Colleges Recommended for You</div>
+                    <div class="card-body ">
                         <table class="table table-light">
                             <thead>
                                 <tr>
@@ -56,7 +56,10 @@
                             </tbody>
                         </table>
                     </div>
-                <div class="card-header">All Available Colleges</div>
+                </div>
+                <br>
+                <div class="card">
+                    <div class="card-header">All Available Colleges</div>
                     <div class="card-body">
                         <table class="table table-light">
                             <thead>
@@ -128,7 +131,7 @@
                             </div>
                         </div>
                     </div>
-            </div>
+                </div>
         </div>
     </div>
 </div>
