@@ -23,9 +23,15 @@ class CollegeForStudentController extends Controller
     public function showCollegeToStudent(College $colleges){
 
         $colleges = College::all();
-        // return $this->recommend($colleges);
-        // return $colleges;
-        return view('collegeForStudent.collegesList', compact('colleges'));
+        $recommendedColleges =  $this->recommend();
+
+        foreach($recommendedColleges as $collegeID){
+            $rColleges[] = College::find($collegeID);
+        }
+        if(count($colleges) == count($rColleges)){
+            return view('collegeForStudent.collegesList', compact('colleges'));
+        }
+        return view('collegeForStudent.collegesListWithReco', compact('colleges', 'rColleges'));
     }
 
     public function recommend(){
@@ -429,7 +435,148 @@ class CollegeForStudentController extends Controller
             $maxIndices = array_keys($recommendMat, max($recommendMat));
             return $maxIndices;
         }
+
         else{
+                        
+            //SETTING A USER-INTEREST MATRIX
+            $userInterestMat[0][0] = 0;
+            $userInterestMat[0][1] = 0;
+            $userInterestMat[0][2] = 0;
+            $userInterestMat[0][3] = 0;
+            $interestArray = explode(',', $profile->interest);
+            foreach($interestArray as $personInterest){
+                if($personInterest == "Academic")
+                    $userInterestMat[0][0] = 1;
+                if($personInterest == "Sports")
+                    $userInterestMat[0][1] = 1;
+                if($personInterest == "ECA")
+                    $userInterestMat[0][2] = 1;
+                if($personInterest == "Leadership")
+                    $userInterestMat[0][3] = 1;
+            }      
+            // return $userInterestMat;
+
+
+            //SETTING AN AGGREGATED-USER-INTEREST MATRIX
+            $sumUserInterest = $userInterestMat[0][0] + $userInterestMat[0][1] + $userInterestMat[0][2] + $userInterestMat[0][3];
+
+            $aggregatedUserInterestMat[0][0] = ($userInterestMat[0][0]) / $sumUserInterest;
+            $aggregatedUserInterestMat[0][1] = ($userInterestMat[0][1]) / $sumUserInterest;
+            $aggregatedUserInterestMat[0][2] = ($userInterestMat[0][2]) / $sumUserInterest;
+            $aggregatedUserInterestMat[0][3] = ($userInterestMat[0][3]) / $sumUserInterest;
+
+            // return $aggregatedUserInterestMat;
+
+            //SETTING WEIGHTED CANDIDATE COLLEGE MATRIX
+
+            foreach($colleges as $college){
+                $m=0;
+                    if($college->speciality == "Academic"){
+                        $weightedCandidateMat[$college->id][$m]= $aggregatedUserInterestMat[0][0];
+                        $weightedCandidateMat[$college->id][$m+1]= 0;
+                        $weightedCandidateMat[$college->id][$m+2]= 0;
+                        $weightedCandidateMat[$college->id][$m+3]= 0;
+                    }
+                    if($college->speciality == "Sports"){
+                        $weightedCandidateMat[$college->id][$m]= 0;
+                        $weightedCandidateMat[$college->id][$m+1]= $aggregatedUserInterestMat[0][1];
+                        $weightedCandidateMat[$college->id][$m+2]= 0;
+                        $weightedCandidateMat[$college->id][$m+3]= 0;
+
+                    }
+                    if($college->speciality == "ECA"){
+                        $weightedCandidateMat[$college->id][$m]= 0;
+                        $weightedCandidateMat[$college->id][$m+1]= 0;
+                        $weightedCandidateMat[$college->id][$m+2]= $aggregatedUserInterestMat[0][2];
+                        $weightedCandidateMat[$college->id][$m+3]= 0;
+                    }
+                    if($college->speciality == "Leadership"){
+                        $weightedCandidateMat[$college->id][$m]= 0;
+                        $weightedCandidateMat[$college->id][$m+1]= 0;
+                        $weightedCandidateMat[$college->id][$m+2]= 0;
+                        $weightedCandidateMat[$college->id][$m+3]= $aggregatedUserInterestMat[0][3];
+                    }
+
+                    if($college->speciality == "Academic,Sports"){
+                        $weightedCandidateMat[$college->id][$m]= $aggregatedUserInterestMat[0][0];
+                        $weightedCandidateMat[$college->id][$m+1]= $aggregatedUserInterestMat[0][1];
+                        $weightedCandidateMat[$college->id][$m+2]= 0;
+                        $weightedCandidateMat[$college->id][$m+3]= 0;
+                    }
+                    if($college->speciality == "Academic,ECA"){
+                        $weightedCandidateMat[$college->id][$m]= $aggregatedUserInterestMat[0][0];
+                        $weightedCandidateMat[$college->id][$m+1]= 0;
+                        $weightedCandidateMat[$college->id][$m+2]= $aggregatedUserInterestMat[0][2];
+                        $weightedCandidateMat[$college->id][$m+3]= 0;
+                    }
+                    if($college->speciality == "Academic,Leadership"){
+                        $weightedCandidateMat[$college->id][$m]= $aggregatedUserInterestMat[0][0];
+                        $weightedCandidateMat[$college->id][$m+1]= 0;
+                        $weightedCandidateMat[$college->id][$m+2]= 0;
+                        $weightedCandidateMat[$college->id][$m+3]= $aggregatedUserInterestMat[0][3];
+                    }
+                    if($college->speciality == "Sports,ECA"){
+                        $weightedCandidateMat[$college->id][$m]= 0;
+                        $weightedCandidateMat[$college->id][$m+1]= $aggregatedUserInterestMat[0][1];
+                        $weightedCandidateMat[$college->id][$m+2]= $aggregatedUserInterestMat[0][2];
+                        $weightedCandidateMat[$college->id][$m+3]= 0;
+                    }
+                    if($college->speciality == "Sports,Leadership"){
+                        $weightedCandidateMat[$college->id][$m]= 0;
+                        $weightedCandidateMat[$college->id][$m+1]= $aggregatedUserInterestMat[0][1];
+                        $weightedCandidateMat[$college->id][$m+2]= 0;
+                        $weightedCandidateMat[$college->id][$m+3]= $aggregatedUserInterestMat[0][3];
+                    }
+                    if($college->speciality == "ECA,Leadership"){
+                        $weightedCandidateMat[$college->id][$m]= 0;
+                        $weightedCandidateMat[$college->id][$m+1]= 0;
+                        $weightedCandidateMat[$college->id][$m+2]= $aggregatedUserInterestMat[0][2];
+                        $weightedCandidateMat[$college]->id[$m+3]= $aggregatedUserInterestMat[0][3];
+                    }
+                    if($college->speciality == "Academic,Sports,ECA"){
+                        $weightedCandidateMat[$college->id][$m]= $aggregatedUserInterestMat[0][0];
+                        $weightedCandidateMat[$college->id][$m+1]= $aggregatedUserInterestMat[0][1];
+                        $weightedCandidateMat[$college->id][$m+2]= $aggregatedUserInterestMat[0][2];
+                        $weightedCandidateMat[$college->id][$m+3]= 0;
+                    }
+                    if($college->speciality == "Academic,Sports,Leadership"){
+                        $weightedCandidateMat[$college->id][$m]= $aggregatedUserInterestMat[0][0];
+                        $weightedCandidateMat[$college->id][$m+1]= $aggregatedUserInterestMat[0][1];
+                        $weightedCandidateMat[$college->id][$m+2]= 0;
+                        $weightedCandidateMat[$college->id][$m+3]= $aggregatedUserInterestMat[0][3];
+                    }
+                    if($college->speciality == "Sports,ECA,Leadership"){
+                        $weightedCandidateMat[$college->id][$m]= 0;
+                        $weightedCandidateMat[$college->id][$m+1]= $aggregatedUserInterestMat[0][1];
+                        $weightedCandidateMat[$college->id][$m+2]= $aggregatedUserInterestMat[0][2];
+                        $weightedCandidateMat[$college->id][$m+3]= $aggregatedUserInterestMat[0][3];
+                    }
+                    if($college->speciality == "Academic,ECA,Leadership"){
+                        $weightedCandidateMat[$college->id][$m]= $aggregatedUserInterestMat[0][0];
+                        $weightedCandidateMat[$college->id][$m+1]= 0;
+                        $weightedCandidateMat[$college->id][$m+2]= $aggregatedUserInterestMat[0][2];
+                        $weightedCandidateMat[$college->id][$m+3]= $aggregatedUserInterestMat[0][3];
+                    }
+                    if($college->speciality == "Academic,Sports,ECA,Leadership"){
+                        $weightedCandidateMat[$college->id][$m]= $aggregatedUserInterestMat[0][0];
+                        $weightedCandidateMat[$college->id][$m+1]= $aggregatedUserInterestMat[0][1];
+                        $weightedCandidateMat[$college->id][$m+2]= $aggregatedUserInterestMat[0][2];
+                        $weightedCandidateMat[$college->id][$m+3]= $aggregatedUserInterestMat[0][3];
+                    }   
+            }
+
+            // return $weightedCandidateMat;
+
+            //CALCULATION OF RECOMMENDATION MATRIX
+            foreach($colleges as $recommendCollege){
+                $recommendMat[$recommendCollege->id] = $weightedCandidateMat[$recommendCollege->id][0] + $weightedCandidateMat[$recommendCollege->id][1] + $weightedCandidateMat[$recommendCollege->id][2] + $weightedCandidateMat[$recommendCollege->id][3];
+            }
+            // return $recommendMat;
+            
+
+            //RETURNING THE INDEX OF THE RECOMMENDED COLLEGE
+            $maxIndices = array_keys($recommendMat, max($recommendMat));
+            return $maxIndices;
 
         }
     }
