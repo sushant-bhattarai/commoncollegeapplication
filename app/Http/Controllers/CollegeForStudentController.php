@@ -420,11 +420,14 @@ class CollegeForStudentController extends Controller
 
             //CALCULATION OF RECOMMENDATION MATRIX
             foreach($colleges as $recommendCollege){
-                $recommendMat[$recommendCollege->id][0] = $weightedCandidateMat[$recommendCollege->id][0] + $weightedCandidateMat[$recommendCollege->id][1] + $weightedCandidateMat[$recommendCollege->id][2] + $weightedCandidateMat[$recommendCollege->id][3];
+                $recommendMat[$recommendCollege->id] = $weightedCandidateMat[$recommendCollege->id][0] + $weightedCandidateMat[$recommendCollege->id][1] + $weightedCandidateMat[$recommendCollege->id][2] + $weightedCandidateMat[$recommendCollege->id][3];
             }
-
             // return $recommendMat;
-            return " hello";
+            
+
+            //RETURNING THE INDEX OF THE RECOMMENDED COLLEGE
+            $maxIndices = array_keys($recommendMat, max($recommendMat));
+            return $maxIndices;
         }
         else{
 
