@@ -60,6 +60,9 @@
                     <ul class="navbar-nav mr-auto font-weight-bold">
                         <a href="/users" class="nav-link">View registered users</a>
                     </ul>
+                    <ul class="navbar-nav mr-auto font-weight-bold">
+                        <a href="/applied/users" class="nav-link">View Applicants Info</a>
+                    </ul>
                     @endauth
 
                     <!-- Right Side Of Navbar -->

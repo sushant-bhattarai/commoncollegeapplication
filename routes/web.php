@@ -39,6 +39,7 @@ Route::post('/view/{college_id}/application/{profile_id}', 'CollegeForStudentCon
 
 Route::get('/users', 'CollegeForAdminController@showUsers');
 Route::get('/user/{user_id}', 'CollegeForAdminController@showOneUser');
+Route::get('/applied/users', 'CollegeForAdminController@showApplicants');
 
 
 

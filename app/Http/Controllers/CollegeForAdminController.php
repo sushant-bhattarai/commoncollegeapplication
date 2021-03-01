@@ -165,4 +165,11 @@ class CollegeForAdminController extends Controller
         return view('collegeForAdmin.showOneUser', compact('user'));
     }
 
+    public function showApplicants(){
+        $colleges = College::all();
+        $profiles = Profile::all();
+        
+        return view('collegeForAdmin.showApplicants', compact('colleges', 'profiles'));
+    }
+
 }

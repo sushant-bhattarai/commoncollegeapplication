@@ -15,7 +15,8 @@
                     @endif
                     <a href="{{ route('college.create') }}">Add new College</a><br><br>
                     <a href="{{ route('college.index') }}">View added Colleges</a><br><br>
-                    <a href="/users">View registered Users</a>
+                    <a href="/users">View registered Users</a><br><br>
+                    <a href="/applied/users">View Applicants Info</a>
 
                 </div>
             </div>
