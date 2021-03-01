@@ -9,6 +9,6 @@ class Application extends Model
     public function profiles()
     {
         return $this->belongsToMany('App\Profile')
-                    ->withPivot('priority');
+                    ->withPivot('priority','unique_id');
     }
 }

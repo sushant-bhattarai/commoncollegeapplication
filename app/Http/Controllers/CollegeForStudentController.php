@@ -620,7 +620,8 @@ class CollegeForStudentController extends Controller
 
     public function applyCollege($application_id, $profile_id){
         // return $application_id;
-        $collegeCount = 5;
+        $totalColleges = College::all();
+        $collegeCount = count($totalColleges);
         $count = 0;
         $profile = Profile::find($profile_id);
         $application = Application::find($application_id);
@@ -632,8 +633,10 @@ class CollegeForStudentController extends Controller
         }
         // return $count;
         $priority = $collegeCount - $count;
+        $applicant_id = uniqid();
+        // return $applicant_id;
         // return $priority;
-        $profile->applications()->attach($application, ['priority' => $priority]);  
+        $profile->applications()->attach($application_id, ['priority' => $priority, 'unique_id' => $applicant_id]);  
 
         $user  = User::findOrFail(Auth::user()->id);
         $user->has_applied = 1;
@@ -665,8 +668,10 @@ class CollegeForStudentController extends Controller
         return redirect()->route('myCollege', Auth::user()->id)->withStatus('College deleted from My Colleges!');
     }
 
-    public function showApplicationForm($college_id, $profile_id){
-
+    public function viewApplication($college_id, $profile_id){
+        $college = College::find($college_id);
+        $profile = Profile::find($profile_id);
+        return view('collegeForStudent.showApplication', compact('college', 'profile'));
     }
     
 }

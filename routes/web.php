@@ -35,6 +35,7 @@ Route::post('/college/{college_id}/add/{profile_id}', 'CollegeForStudentControll
 Route::post('/college/{college_id}/delete/{profile_id}', 'CollegeForStudentController@deleteFromMyCollege');
 Route::post('/college/{college_id}/apply/{profile_id}', 'CollegeForStudentController@applyCollege');
 Route::get('/college/my/{profile_id}', 'CollegeForStudentController@showMyColleges')->name('myCollege');
+Route::post('/view/{college_id}/application/{profile_id}', 'CollegeForStudentController@viewApplication');
 
 Route::get('/users', 'CollegeForAdminController@showUsers');
 Route::get('/user/{user_id}', 'CollegeForAdminController@showOneUser');

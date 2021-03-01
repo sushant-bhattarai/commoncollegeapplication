@@ -18,6 +18,7 @@ class CreateProfilesApplicationsTable extends Migration
             $table->integer('profile_id');
             $table->bigInteger('application_id');
             $table->integer('priority');
+            $table->string('unique_id')->unique();
             $table->timestamps();
         });
     }

@@ -33,6 +33,6 @@ class Profile extends Model
     public function applications()
     {
         return $this->belongsToMany('App\Application')
-                    ->withPivot('priority');
+                    ->withPivot('priority','unique_id');
     }
 }

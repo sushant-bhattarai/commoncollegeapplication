@@ -28,7 +28,7 @@
                                         @elseif($user->is_admin == 1)
                                             <td><button class="btn btn-sm btn-dark">Admin</button></td>
                                         @elseif($user->profile_id == NULL)
-                                        <td><button class="btn btn-sm btn-dark">Profile not added</button></td>
+                                        <td><button class="btn btn-sm btn-danger">Profile not added</button></td>
                                         @else
                                         <td></td>
                                         @endif
