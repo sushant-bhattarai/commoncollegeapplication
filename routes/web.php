@@ -42,4 +42,10 @@ Route::get('/user/{user_id}', 'CollegeForAdminController@showOneUser');
 Route::get('/applied/users', 'CollegeForAdminController@showApplicants');
 
 
+Route::get('/payment-verify', [
+    'uses' => 'PaymentVerificationController@verify',
+    'as' => 'payment.verify',
+    
+]);
+
 

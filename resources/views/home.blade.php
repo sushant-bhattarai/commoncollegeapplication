@@ -16,6 +16,11 @@
                             {{ session('status') }}
                         </div>
                     @endif
+                    @if (session('dangerstatus'))
+                        <div class="alert alert-danger" role="alert">
+                            {{ session('dangerstatus') }}
+                        </div>
+                    @endif
 
                     @if(Auth::user()->has_applied == 1)
                         <h6>Your Application Progress:</h6>
