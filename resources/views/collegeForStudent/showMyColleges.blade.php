@@ -24,7 +24,7 @@
                             <tr>
                                 <th>College Name</th>
                                 <th>Action</th>
-                                <th>Status</th>
+                                <th></th>
                             </tr>
                         </thead>
                         <tbody>

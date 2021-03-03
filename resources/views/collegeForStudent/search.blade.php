@@ -43,7 +43,7 @@
                                 @foreach($details as $college)
                                 <?php  $temp=0; ?>
                                 <tr>
-                                    <td><a href="#">{{$college->name}}</a></td>
+                                    <td><a href="/college/{{$college->id}}/info">{{$college->name}}</a></td>
                                     <td>
                                         <a href="/college/{{$college->id}}/info"><button class="btn btn-dark">Info</button></a>
                                         @foreach($profile->colleges as $myCollege)

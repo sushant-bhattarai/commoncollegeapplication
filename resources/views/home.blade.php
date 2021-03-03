@@ -35,12 +35,12 @@
                                 <tbody>
                                 @foreach($profile->applications as $college)
                                     <tr>
-                                        <td>{{$college->name}}</td>
+                                        <td><a href="/college/{{$college->id}}/info">{{$college->name}}</a></td>
                                         <td><form action="/view/{{$college->id}}/application/{{$college->pivot->profile_id}}" method="POST">
                                             @csrf
                                             <button type="submit" class="btn btn-dark">{{$college->pivot->unique_id}}</button>
                                         </form></td>
-                                        <td><button class="btn btn-dark">Applied</button></td>
+                                        <td><button class="btn btn-dark">Verified</button></td>
                                     </tr>
                                 @endforeach
                                 </tbody>
