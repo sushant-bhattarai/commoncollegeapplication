@@ -28,19 +28,19 @@
                                 <thead>
                                     <tr>
                                         <th>College Name</th>
-                                        <th>Application ID</th>
-                                        <th>Status</th>
+                                        <th>Action</th>
+                                        <th>Payment Status</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                 @foreach($profile->applications as $college)
                                     <tr>
                                         <td><a href="/college/{{$college->id}}/info">{{$college->name}}</a></td>
-                                        <td><form action="/view/{{$college->id}}/application/{{$college->pivot->profile_id}}" method="POST">
+                                        <td><form action="/view/{{$college->id}}/admitCard/{{$college->pivot->profile_id}}" method="POST">
                                             @csrf
-                                            <button type="submit" class="btn btn-dark">{{$college->pivot->unique_id}}</button>
+                                            <button type="submit" class="btn btn-dark">View Admit Card</button>
                                         </form></td>
-                                        <td><button class="btn btn-dark">Verified</button></td>
+                                        <td><strong> Verified </strong></td>
                                     </tr>
                                 @endforeach
                                 </tbody>

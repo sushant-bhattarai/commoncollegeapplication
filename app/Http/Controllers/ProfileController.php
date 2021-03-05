@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use App\College;
 use App\Profile;
+use PDF;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\ImageEditRequest;
@@ -20,6 +23,30 @@ class ProfileController extends Controller
         $this->middleware('fillProfileForm')->except(['create', 'store']);
         $this->middleware('profileEdit')->only(['edit', 'update', 'show']);
     }
+
+    public function showAdmitCard($college_id, $profile_id){
+        $college = College::find($college_id);
+        $profile = Profile::find($profile_id);
+        return view('collegeForStudent.admitCard', compact('college', 'profile'));
+
+    }
+
+    public function pdfview(Request $request)
+    {
+        
+        // return $colleges;
+        // view()->share('college',$items);
+
+        if($request->has('download')){
+            $pdf = PDF::loadView('collegeForStudent.admitCard');
+            return $pdf->download('pdfview.pdf');
+        }
+
+
+        return view('collegeForStudent.admitCard');
+    }
+
+    
     /**
      * Display a listing of the resource.
      *

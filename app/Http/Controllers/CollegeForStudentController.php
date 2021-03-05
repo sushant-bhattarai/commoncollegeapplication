@@ -118,7 +118,7 @@ class CollegeForStudentController extends Controller
                         $collegeMat[$college->id][$i]= 0;
                         $collegeMat[$college->id][$i+1]= 0;
                         $collegeMat[$college->id][$i+2]= 1;
-                        $collegeMat[$college]->id[$i+3]= 1;
+                        $collegeMat[$college->id][$i+3]= 1;
                     }
                     if($college->speciality == "Academic,Sports,ECA"){
                         $collegeMat[$college->id][$i]= 1;
@@ -531,7 +531,7 @@ class CollegeForStudentController extends Controller
                         $weightedCandidateMat[$college->id][$m]= 0;
                         $weightedCandidateMat[$college->id][$m+1]= 0;
                         $weightedCandidateMat[$college->id][$m+2]= $aggregatedUserInterestMat[0][2];
-                        $weightedCandidateMat[$college]->id[$m+3]= $aggregatedUserInterestMat[0][3];
+                        $weightedCandidateMat[$college->id][$m+3]= $aggregatedUserInterestMat[0][3];
                     }
                     if($college->speciality == "Academic,Sports,ECA"){
                         $weightedCandidateMat[$college->id][$m]= $aggregatedUserInterestMat[0][0];

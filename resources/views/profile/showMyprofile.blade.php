@@ -20,7 +20,7 @@
                         </div>
                     @endif
                     
-                <div class="float-right mr-5">
+                <div class="float-right">
                     <a target="_blank" href="/images/your_photos/{{$profile->your_photo}}">
                         <img src="/images/your_photos/{{$profile->your_photo}}" alt="{{$profile->your_photo}}"
                         style="border: 1px solid #ddd;

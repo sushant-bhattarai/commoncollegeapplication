@@ -48,4 +48,6 @@ Route::get('/payment-verify', [
     
 ]);
 
+Route::post('/view/{college_id}/admitCard/{profile_id}', 'ProfileController@showAdmitCard');
+Route::get('/pdfview',array('as'=>'pdfview','uses'=>'ProfileController@pdfview'));
 
