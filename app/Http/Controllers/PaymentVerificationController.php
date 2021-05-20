@@ -43,7 +43,7 @@ class PaymentVerificationController extends Controller
                 // dd('transaction was successfull');
             } else {
                 // dd('transaction failed');
-                return redirect('/home')->withDangerstatus('Payment Unsuccessful. Make a successful payment again!');
+                return redirect('/home')->withDangerstatus('Payment Unsuccessful. Make payment again!');
             }
     }
 

@@ -112,7 +112,7 @@ class ProfileController extends Controller
         //saving interests by implode function:
         if($request->has('interest')){
             $stringOfInterest = implode(',', $request->input('interest'));
-            $profile->interest = $stringOfInterest.',Academic';
+            $profile->interest = 'Academic,'.$stringOfInterest;
         }
         else{
             $profile->interest = "Academic";
